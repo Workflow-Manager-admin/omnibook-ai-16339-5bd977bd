@@ -1,9 +1,11 @@
 import React from 'react';
+import React from 'react';
 import './App.css';
 import MainContainer from './containers/MainContainer';
 import NavBar from './components/Layout/NavBar';
 import SideBar from './components/Layout/SideBar';
 import Footer from './components/Layout/Footer';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 
 // Stubs for routed pages
 function HomePage() {
@@ -46,9 +48,6 @@ function NotFoundPage() {
   /** 404 page stub */
   return <div className="container"><h2>404</h2><p>Page not found.</p></div>;
 }
-
-// --- React Router Setup ---
-import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 
 function App() {
   return (
