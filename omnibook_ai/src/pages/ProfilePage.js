@@ -18,7 +18,7 @@ function ProfilePage() {
   };
 
   return (
-    <div className="container" style={{ marginTop: 40, maxWidth: 480 }}>
+    <div className="container" style={{ marginTop: 32, maxWidth: 480 }}>
       <div
         style={{
           fontWeight: 700,
