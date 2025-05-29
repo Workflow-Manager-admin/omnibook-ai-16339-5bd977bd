@@ -11,9 +11,16 @@ import DomainPageStub from './pages/DomainPageStub';
 import ProfilePage from './pages/ProfilePage';
 
 // Stubs for routed pages
+import { useNavigate } from 'react-router-dom';
 // PUBLIC_INTERFACE
 function HomePage() {
   /** Home page stub */
+  const navigate = useNavigate();
+
+  function handleGetStarted() {
+    navigate("/bookings");
+  }
+
   return (
     <div className="container">
       <div className="hero">
@@ -22,7 +29,13 @@ function HomePage() {
         <div className="description">
           Welcome to OmniBook AI. Start building your application.
         </div>
-        <button className="btn btn-large">Call To Action</button>
+        <button
+          className="btn btn-large"
+          onClick={handleGetStarted}
+          aria-label="Get Started, go to Bookings"
+        >
+          Get Started
+        </button>
       </div>
     </div>
   );

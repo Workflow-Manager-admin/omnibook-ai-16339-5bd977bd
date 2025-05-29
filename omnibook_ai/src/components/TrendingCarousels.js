@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 /**
  * PUBLIC_INTERFACE
@@ -45,6 +46,16 @@ function TrendingCarousels() {
       meta: "All India",
     },
   ];
+
+  // Use React Router navigation
+  const navigate = useNavigate();
+
+  // Stub for potential event-specific navigation (e.g. /book/:eventId, here just /bookings)
+  function handleBookNow(card) {
+    // In the future, we may route to `/book/${card.id}` or similar
+    navigate("/bookings");
+  }
+
   return (
     <div
       style={{
@@ -89,10 +100,9 @@ function TrendingCarousels() {
               padding: "0 0 18px 0",
               overflow: "hidden",
               transition: "transform .19s",
-              cursor: "pointer",
+              cursor: "default",
               position: "relative"
             }}
-            // Action handler could be added here
           >
             <div style={{
               width: "100%",
@@ -147,6 +157,25 @@ function TrendingCarousels() {
                 {card.date} — {card.meta}
               </span>
             </div>
+            <button
+              className="btn btn-large"
+              style={{
+                marginTop: 13,
+                alignSelf: "center",
+                width: "calc(100% - 34px)",
+                fontWeight: 600,
+                background: "var(--kavia-orange)",
+                color: "#fff",
+                borderRadius: 9,
+                fontSize: "1.01rem",
+                border: "none",
+                cursor: "pointer"
+              }}
+              onClick={() => handleBookNow(card)}
+              aria-label={`Book now for ${card.title}`}
+            >
+              Book Now
+            </button>
           </div>
         ))}
       </div>
