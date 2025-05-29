@@ -51,7 +51,7 @@ body {
 
 /* Fixed NavBar styles */
 .navbar {
-  background-color: var(--kavia-dark);
+  background-color: var(--nav-bg);
   padding: 16px;
   display: flex;
   align-items: center;
