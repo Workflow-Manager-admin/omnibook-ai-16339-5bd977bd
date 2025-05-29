@@ -123,7 +123,8 @@ body {
 }
 
 .hero {
-  padding-top: 120px;
+  /* Reduced top padding to avoid too much gap when search bar is at the top */
+  padding-top: 38px;
   padding-bottom: 64px;
   text-align: center;
   display: flex;

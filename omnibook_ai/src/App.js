@@ -14,9 +14,10 @@ import { useBookings } from './contexts/BookingsContext';
 
 // Stubs for routed pages
 import { useNavigate } from 'react-router-dom';
+import UniversalSearchBar from './components/UniversalSearchBar';
 // PUBLIC_INTERFACE
 function HomePage() {
-  /** Home page stub */
+  /** Home page with prominent UniversalSearchBar and hero */
   const navigate = useNavigate();
 
   function handleGetStarted() {
@@ -24,52 +25,57 @@ function HomePage() {
   }
 
   return (
-    <div className="container">
-      <div className="hero">
-        <h1
-          className="title"
-          style={{
-            letterSpacing: "0.01em",
-            textTransform: "lowercase",
-            display: "inline-flex",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: 8,
-            fontFamily: "'Inter', 'Roboto', sans-serif"
-          }}
-        >
-          <span
+    <div>
+      {/* UniversalSearchBar is visually at the top */}
+      <UniversalSearchBar />
+
+      <div className="container">
+        <div className="hero" style={{ paddingTop: 38, paddingBottom: 58 }}>
+          <h1
+            className="title"
             style={{
-              color: "var(--kavia-orange)",
-              fontWeight: 800,
-              textShadow: "0 2px 7px #ff970035",
-              marginRight: 3
+              letterSpacing: "0.01em",
+              textTransform: "lowercase",
+              display: "inline-flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: 8,
+              fontFamily: "'Inter', 'Roboto', sans-serif"
             }}
           >
-            omnibook
-          </span>
-          <span
-            style={{
-              color: "var(--accent)",
-              fontWeight: 900,
-              marginLeft: 0,
-              textShadow: "0 2px 7px #fd0f  ",
-              fontSize: "0.97em"
-            }}
+            <span
+              style={{
+                color: "var(--kavia-orange)",
+                fontWeight: 800,
+                textShadow: "0 2px 7px #ff970035",
+                marginRight: 3
+              }}
+            >
+              omnibook
+            </span>
+            <span
+              style={{
+                color: "var(--accent)",
+                fontWeight: 900,
+                marginLeft: 0,
+                textShadow: "0 2px 7px #fd0f  ",
+                fontSize: "0.97em"
+              }}
+            >
+              ai
+            </span>
+          </h1>
+          <div className="description">
+            Welcome to OmniBook AI. Start building your application.
+          </div>
+          <button
+            className="btn btn-large"
+            onClick={handleGetStarted}
+            aria-label="Get Started, go to Bookings"
           >
-            ai
-          </span>
-        </h1>
-        <div className="description">
-          Welcome to OmniBook AI. Start building your application.
+            Get Started
+          </button>
         </div>
-        <button
-          className="btn btn-large"
-          onClick={handleGetStarted}
-          aria-label="Get Started, go to Bookings"
-        >
-          Get Started
-        </button>
       </div>
     </div>
   );
