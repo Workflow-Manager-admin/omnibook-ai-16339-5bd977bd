@@ -42,39 +42,40 @@ function HomePage() {
 }
 
  
-// PUBLIC_INTERFACE
+/* BookingsPage
+ * Bookings page featuring a purpose dropdown, contextual forms for sports/movies/travel/venues/resorts/local events/concerts,
+ * saves bookings locally and displays history. Polished UI inline with app styling.
+ */
 function BookingsPage() {
-  /**
-   * BookingsPage – main bookings UI: lets user select domain (purpose), shows a dynamic booking form, and tracks bookings for history.
-   */
+  // Options for dropdown: "purpose"
   const PURPOSE_OPTIONS = [
     { label: 'Sports Events', value: 'sports' },
     { label: 'Movies and Shows', value: 'movies' },
     { label: 'Travel (Bus, Train, Flights)', value: 'travel' },
     { label: 'Event Venues', value: 'venues' },
     { label: 'Resorts', value: 'resorts' },
-    { label: 'Local Events', value: 'localEvents' },
+    { label: 'Local Events', value: 'localevents' },
     { label: 'Concerts', value: 'concerts' }
   ];
 
-  // State: selected purpose, booking form fields, all bookings for history
+  // Main state
   const [purpose, setPurpose] = useState('');
   const [formData, setFormData] = useState({});
-  const [bookings, setBookings] = useState([]); // later can move to context/global
+  const [bookings, setBookings] = useState([]);
 
-  // Reset relevant formData when type changes
+  // Reset form on dropdown change
   function handlePurposeChange(e) {
     setPurpose(e.target.value);
     setFormData({});
   }
 
-  // Generic field handler (used by all forms)
+  // For all form fields; handles all types as strings
   function handleChange(e) {
     const { name, value } = e.target;
-    setFormData(fd => ({ ...fd, [name]: value }));
+    setFormData(f => ({ ...f, [name]: value }));
   }
 
-  // Domain-specific minimal dynamic forms (expand/replace as needed)
+  // Render fields per type
   function renderBookingForm() {
     switch (purpose) {
       case 'sports':
@@ -82,15 +83,15 @@ function BookingsPage() {
           <>
             <label>
               Event Name
-              <input type="text" required name="event" value={formData.event || ''} onChange={handleChange} />
+              <input type="text" name="event" required value={formData.event || ''} onChange={handleChange} />
             </label>
             <label>
               Number of Tickets
-              <input type="number" min="1" name="tickets" value={formData.tickets || ''} onChange={handleChange} />
+              <input type="number" min="1" name="tickets" required value={formData.tickets || ''} onChange={handleChange} />
             </label>
             <label>
-              Preferred Date
-              <input type="date" name="date" value={formData.date || ''} onChange={handleChange} />
+              Date
+              <input type="date" name="date" required value={formData.date || ''} onChange={handleChange} />
             </label>
           </>
         );
@@ -98,20 +99,20 @@ function BookingsPage() {
         return (
           <>
             <label>
-              Movie/Show
-              <input type="text" required name="movie" value={formData.movie || ''} onChange={handleChange} />
+              Movie/Show Name
+              <input type="text" name="movie" required value={formData.movie || ''} onChange={handleChange} />
             </label>
             <label>
-              Location
-              <input type="text" required name="location" value={formData.location || ''} onChange={handleChange} />
+              Cinema/Location
+              <input type="text" name="location" required value={formData.location || ''} onChange={handleChange} />
             </label>
             <label>
-              Number of Seats
-              <input type="number" min="1" name="seats" value={formData.seats || ''} onChange={handleChange} />
+              Seats
+              <input type="number" name="seats" min="1" required value={formData.seats || ''} onChange={handleChange} />
             </label>
             <label>
               Show Time
-              <input type="datetime-local" name="showTime" value={formData.showTime || ''} onChange={handleChange} />
+              <input type="datetime-local" name="showTime" required value={formData.showTime || ''} onChange={handleChange} />
             </label>
           </>
         );
@@ -120,33 +121,28 @@ function BookingsPage() {
           <>
             <label>
               Travel Mode
-              <select
-                name="travelMode"
-                value={formData.travelMode || ''}
-                onChange={handleChange}
-                required
-              >
+              <select name="travelMode" required value={formData.travelMode || ''} onChange={handleChange}>
                 <option value="">Select</option>
                 <option value="bus">Bus</option>
                 <option value="train">Train</option>
-                <option value="flight">Flight</option>
+                <option value="flights">Flights</option>
               </select>
             </label>
             <label>
               From
-              <input type="text" required name="from" value={formData.from || ''} onChange={handleChange} />
+              <input type="text" name="from" required value={formData.from || ''} onChange={handleChange} />
             </label>
             <label>
               To
-              <input type="text" required name="to" value={formData.to || ''} onChange={handleChange} />
+              <input type="text" name="to" required value={formData.to || ''} onChange={handleChange} />
             </label>
             <label>
-              Departure Date
-              <input type="date" name="date" value={formData.date || ''} onChange={handleChange} />
+              Date of Journey
+              <input type="date" name="date" required value={formData.date || ''} onChange={handleChange} />
             </label>
             <label>
               Passengers
-              <input type="number" min="1" name="passengers" value={formData.passengers || ''} onChange={handleChange} />
+              <input type="number" name="passengers" min="1" required value={formData.passengers || ''} onChange={handleChange} />
             </label>
           </>
         );
@@ -155,19 +151,19 @@ function BookingsPage() {
           <>
             <label>
               Venue Name
-              <input type="text" required name="venue" value={formData.venue || ''} onChange={handleChange} />
+              <input type="text" name="venue" required value={formData.venue || ''} onChange={handleChange} />
             </label>
             <label>
               Event Type
-              <input type="text" required name="eventType" value={formData.eventType || ''} onChange={handleChange} />
+              <input type="text" name="eventType" required value={formData.eventType || ''} onChange={handleChange} />
             </label>
             <label>
-              Booking Date
-              <input type="date" name="date" value={formData.date || ''} onChange={handleChange} />
+              Date
+              <input type="date" name="date" required value={formData.date || ''} onChange={handleChange} />
             </label>
             <label>
-              Expected Guests
-              <input type="number" min="1" name="guests" value={formData.guests || ''} onChange={handleChange} />
+              Guests
+              <input type="number" name="guests" min="1" required value={formData.guests || ''} onChange={handleChange} />
             </label>
           </>
         );
@@ -176,40 +172,40 @@ function BookingsPage() {
           <>
             <label>
               Resort Name
-              <input type="text" required name="resort" value={formData.resort || ''} onChange={handleChange} />
+              <input type="text" name="resort" required value={formData.resort || ''} onChange={handleChange} />
             </label>
             <label>
               Check-in
-              <input type="date" name="checkin" value={formData.checkin || ''} onChange={handleChange} />
+              <input type="date" name="checkin" required value={formData.checkin || ''} onChange={handleChange} />
             </label>
             <label>
               Check-out
-              <input type="date" name="checkout" value={formData.checkout || ''} onChange={handleChange} />
+              <input type="date" name="checkout" required value={formData.checkout || ''} onChange={handleChange} />
             </label>
             <label>
-              Guests
-              <input type="number" min="1" name="guests" value={formData.guests || ''} onChange={handleChange} />
+              Number of Guests
+              <input type="number" name="guests" min="1" required value={formData.guests || ''} onChange={handleChange} />
             </label>
           </>
         );
-      case 'localEvents':
+      case 'localevents':
         return (
           <>
             <label>
               Event Name
-              <input type="text" required name="event" value={formData.event || ''} onChange={handleChange} />
+              <input type="text" name="event" required value={formData.event || ''} onChange={handleChange} />
             </label>
             <label>
               Location
-              <input type="text" name="location" value={formData.location || ''} onChange={handleChange} />
+              <input type="text" name="location" required value={formData.location || ''} onChange={handleChange} />
             </label>
             <label>
               Date
-              <input type="date" name="date" value={formData.date || ''} onChange={handleChange} />
+              <input type="date" name="date" required value={formData.date || ''} onChange={handleChange} />
             </label>
             <label>
-              Tickets Needed
-              <input type="number" min="1" name="tickets" value={formData.tickets || ''} onChange={handleChange} />
+              Tickets
+              <input type="number" name="tickets" min="1" required value={formData.tickets || ''} onChange={handleChange} />
             </label>
           </>
         );
@@ -218,19 +214,19 @@ function BookingsPage() {
           <>
             <label>
               Concert Name
-              <input type="text" required name="concert" value={formData.concert || ''} onChange={handleChange} />
+              <input type="text" name="concert" required value={formData.concert || ''} onChange={handleChange} />
             </label>
             <label>
               City
-              <input type="text" name="city" value={formData.city || ''} onChange={handleChange} />
+              <input type="text" name="city" required value={formData.city || ''} onChange={handleChange} />
             </label>
             <label>
               Date
-              <input type="date" name="date" value={formData.date || ''} onChange={handleChange} />
+              <input type="date" name="date" required value={formData.date || ''} onChange={handleChange} />
             </label>
             <label>
               Tickets
-              <input type="number" min="1" name="tickets" value={formData.tickets || ''} onChange={handleChange} />
+              <input type="number" name="tickets" min="1" required value={formData.tickets || ''} onChange={handleChange} />
             </label>
           </>
         );
@@ -239,16 +235,15 @@ function BookingsPage() {
     }
   }
 
-  // PUBLIC_INTERFACE
+  // Save booking, reset form
   function handleBookingSubmit(e) {
     e.preventDefault();
     if (!purpose) return;
-    // Add new booking to local state (simulate backend)
-    setBookings(bk => [
-      ...bk,
+    setBookings(bks => [
+      ...bks,
       {
         id: Date.now(),
-        purpose: PURPOSE_OPTIONS.find(opt => opt.value === purpose)?.label,
+        typeLabel: (PURPOSE_OPTIONS.find(x => x.value === purpose) || {}).label,
         data: { ...formData }
       }
     ]);
@@ -256,13 +251,14 @@ function BookingsPage() {
     setPurpose('');
   }
 
+  // "Polished" booking history rendering
   return (
-    <div className="container" style={{ marginTop: 40, maxWidth: 520 }}>
+    <div className="container" style={{ marginTop: 48, maxWidth: 520 }}>
       <div style={{
         fontWeight: 700,
         fontSize: "1.6rem",
         color: "var(--kavia-orange)",
-        margin: "12px 0 22px 0"
+        margin: "10px 0 18px 0"
       }}>
         Bookings
       </div>
@@ -271,32 +267,38 @@ function BookingsPage() {
         color: "var(--text-secondary)",
         fontSize: "1.08rem"
       }}>
-        Select the purpose below to make a booking.<br />
-        Your submitted bookings appear below.
+        Select the booking purpose to see its corresponding form. Your bookings are shown below.
       </div>
       <form
+        onSubmit={handleBookingSubmit}
         style={{
           background: "var(--surface)",
           borderRadius: 13,
-          boxShadow: "0 1px 7px rgba(0,0,0,0.06)",
+          boxShadow: "0 1.5px 8px rgba(0,0,0,0.06)",
           border: "1.2px solid var(--border-color)",
           display: "flex",
           flexDirection: "column",
-          gap: "1.1rem",
-          padding: "2.2rem 2.4rem 1.5rem 2.4rem",
+          gap: "1.03rem",
+          padding: "2.1rem 2.3rem 1.45rem 2.3rem",
           marginBottom: 30
         }}
-        onSubmit={handleBookingSubmit}
         aria-label="Booking Form"
       >
-        <label>
+        <label style={{ fontWeight: 600 }}>
           Purpose
           <select
             name="purpose"
+            required
             value={purpose}
             onChange={handlePurposeChange}
-            required
-            style={{ marginLeft: 8, padding: "0.5em", borderRadius: 7, border: "1.5px solid var(--border-color)", background: "var(--secondary-bg)", minWidth: 170 }}
+            style={{
+              marginLeft: 8,
+              padding: "0.5em",
+              borderRadius: 7,
+              border: "1.5px solid var(--border-color)",
+              background: "var(--secondary-bg)",
+              minWidth: 170
+            }}
           >
             <option value="">Select purpose</option>
             {PURPOSE_OPTIONS.map(opt => (
@@ -304,20 +306,18 @@ function BookingsPage() {
             ))}
           </select>
         </label>
-        {/* Render the domain-specific form fields */}
-        {purpose && (
-          <div style={{ display: "flex", flexDirection: "column", gap: 13, marginTop: 7 }}>
+        {purpose &&
+          <div style={{ display: "flex", flexDirection: "column", gap: 13, marginTop: 8 }}>
             {renderBookingForm()}
-            <button className="btn btn-large" style={{ marginTop: 12, fontWeight: 600, alignSelf: "flex-start" }}>
+            <button className="btn btn-large" style={{ marginTop: 11, fontWeight: 600, alignSelf: "flex-start" }}>
               Book Now
             </button>
           </div>
-        )}
+        }
       </form>
-      {/* Booking history */}
       <div>
         <div style={{
-          fontSize: "1.19rem",
+          fontSize: "1.16rem",
           fontWeight: 600,
           color: "var(--primary-text)",
           marginBottom: 13
@@ -328,7 +328,7 @@ function BookingsPage() {
           ? <div style={{ color: "var(--text-secondary)" }}>No bookings yet.</div>
           : (
             <ul style={{ padding: 0, listStyle: "none", margin: 0, display: "flex", flexDirection: "column", gap: 15 }}>
-              {bookings.map(({ id, purpose, data }, i) => (
+              {bookings.map(({ id, typeLabel, data }, i) => (
                 <li
                   key={id}
                   style={{
@@ -337,16 +337,18 @@ function BookingsPage() {
                     border: "1.1px solid var(--border-color)",
                     padding: "1.1rem 1.5rem",
                     color: "var(--primary-text)",
-                    boxShadow: "0 1px 4px rgba(0,0,0,0.05)",
+                    boxShadow: "0 1px 4px rgba(0,0,0,0.04)",
                     transition: "background .13s",
-                    fontSize: "1.03rem"
+                    fontSize: "1.05rem"
                   }}
                 >
-                  <span style={{ color: "var(--accent)", fontWeight: 600 }}>{i + 1}. {purpose}</span>
+                  <span style={{ color: "var(--accent)", fontWeight: 600 }}>{i + 1}. {typeLabel}</span>
                   <div style={{ marginTop: 4 }}>
                     {Object.keys(data).map(field =>
-                      <div key={field} style={{ color: "var(--text-secondary)", fontSize: ".97em", marginTop: 2 }}>
-                        <span style={{ fontWeight: 500, color: "var(--primary-text)" }}>{field.charAt(0).toUpperCase() + field.slice(1)}:</span> {data[field]}
+                      <div key={field} style={{ color: "var(--text-secondary)", fontSize: ".98em", marginTop: 2 }}>
+                        <span style={{ fontWeight: 500, color: "var(--primary-text)" }}>
+                          {field.replace(/([A-Z])/g, " $1").replace(/^./, x => x.toUpperCase())}:
+                        </span> {data[field]}
                       </div>
                     )}
                   </div>
