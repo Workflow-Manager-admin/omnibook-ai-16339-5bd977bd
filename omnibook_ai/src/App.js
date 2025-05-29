@@ -26,7 +26,9 @@ function HomePage() {
   return (
     <div className="container">
       <div className="hero">
-        <h1 className="title">omnibook_ai</h1>
+        <h1 className="title" style={{ letterSpacing: "0.01em", textTransform: "lowercase" }}>
+          omnibook&nbsp;<span style={{ color: "var(--accent)" }}>ai</span>
+        </h1>
         <div className="description">
           Welcome to OmniBook AI. Start building your application.
         </div>
