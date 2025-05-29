@@ -1,6 +1,7 @@
 import React from "react";
 import { useMultiLang } from "../../contexts/MultiLangProvider";
 import { Link } from "react-router-dom";
+import AILogo from "./AILogo";
 
 /** PUBLIC_INTERFACE
  * NavBar component for main navigation.
