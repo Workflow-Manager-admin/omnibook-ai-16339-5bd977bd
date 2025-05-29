@@ -46,27 +46,29 @@ function NotFoundPage() {
 
 function App() {
   return (
-    <Router>
-      <div className="app">
-        <NavBar />
-        <MainContainer>
-          <div style={{ display: 'flex', minHeight: 'calc(100vh - 64px)' }}>
-            <SideBar />
-            <div style={{ flex: 1 }}>
-              <Routes>
-                <Route path="/" element={<HomePage />} />
-                <Route path="/bookings" element={<BookingsPage />} />
-                <Route path="/profile" element={<ProfilePage />} />
-                <Route path="/dashboard" element={<AdminVendorDashboard />} />
-                <Route path="/admin" element={<Navigate to="/dashboard" replace />} />
-                <Route path="*" element={<NotFoundPage />} />
-              </Routes>
+    <MultiLangProvider>
+      <Router>
+        <div className="app">
+          <NavBar />
+          <MainContainer>
+            <div style={{ display: 'flex', minHeight: 'calc(100vh - 64px)' }}>
+              <SideBar />
+              <div style={{ flex: 1 }}>
+                <Routes>
+                  <Route path="/" element={<HomePage />} />
+                  <Route path="/bookings" element={<BookingsPage />} />
+                  <Route path="/profile" element={<ProfilePage />} />
+                  <Route path="/dashboard" element={<AdminVendorDashboard />} />
+                  <Route path="/admin" element={<Navigate to="/dashboard" replace />} />
+                  <Route path="*" element={<NotFoundPage />} />
+                </Routes>
+              </div>
             </div>
-          </div>
-        </MainContainer>
-        <Footer />
-      </div>
-    </Router>
+          </MainContainer>
+          <Footer />
+        </div>
+      </Router>
+    </MultiLangProvider>
   );
 }
 
