@@ -10,6 +10,7 @@ import MultiLangProvider from './contexts/MultiLangProvider';
 import BookingsProvider from './contexts/BookingsContext';
 import DomainPageStub from './pages/DomainPageStub';
 import ProfilePage from './pages/ProfilePage';
+import { useBookings } from './contexts/BookingsContext';
 
 // Stubs for routed pages
 import { useNavigate } from 'react-router-dom';
