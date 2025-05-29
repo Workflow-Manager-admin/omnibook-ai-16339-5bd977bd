@@ -7,6 +7,7 @@ import SideBar from './components/Layout/SideBar';
 import Footer from './components/Layout/Footer';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import MultiLangProvider from './contexts/MultiLangProvider';
+import DomainPageStub from './pages/DomainPageStub';
 
 // Stubs for routed pages
 // PUBLIC_INTERFACE
@@ -60,6 +61,7 @@ function App() {
                   <Route path="/profile" element={<ProfilePage />} />
                   <Route path="/dashboard" element={<AdminVendorDashboard />} />
                   <Route path="/admin" element={<Navigate to="/dashboard" replace />} />
+                  <Route path="/domain/:domainSlug" element={<DomainPageStub />} />
                   <Route path="*" element={<NotFoundPage />} />
                 </Routes>
               </div>
