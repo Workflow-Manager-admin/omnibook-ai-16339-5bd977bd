@@ -302,7 +302,7 @@ function BookingsPage() {
 
   // "Polished" booking history rendering (reads from context)
   return (
-    <div className="container" style={{ marginTop: 48, maxWidth: 520 }}>
+    <div className="container" style={{ marginTop: 32, maxWidth: 520 }}>
       <div style={{
         fontWeight: 700,
         fontSize: "1.6rem",
