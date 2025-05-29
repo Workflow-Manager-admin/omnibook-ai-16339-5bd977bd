@@ -25,12 +25,37 @@ function HomePage() {
   }
 
   return (
-    <div>
-      {/* UniversalSearchBar is visually at the top */}
-      <UniversalSearchBar />
-
+    <section
+      className="homepage-hero-section"
+      style={{
+        width: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        marginTop: '0',
+        marginBottom: '0',
+        background: "var(--primary-bg)",
+        // Responsive vertical spacing will be handled in App.css with media queries
+      }}
+    >
+      {/* Search at top of homepage section */}
+      <div
+        className="homepage-searchbar-wrap"
+        style={{
+          width: "100%",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "flex-start",
+          paddingTop: "max(48px, 7vw)", // Ensure padding below NavBar
+          position: "relative",
+          zIndex: 2,
+        }}
+      >
+        <UniversalSearchBar />
+      </div>
+      {/* Hero/main title and call to action */}
       <div className="container">
-        <div className="hero" style={{ paddingTop: 38, paddingBottom: 58 }}>
+        <div className="hero" style={{ paddingTop: 30, paddingBottom: 58 }}>
           <h1
             className="title"
             style={{
@@ -77,7 +102,7 @@ function HomePage() {
           </button>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 
