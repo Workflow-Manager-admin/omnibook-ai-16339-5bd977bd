@@ -1,5 +1,6 @@
 import React from "react";
 import { useMultiLang } from "../../contexts/MultiLangProvider";
+import { Link } from "react-router-dom";
 
 /** PUBLIC_INTERFACE
  * NavBar component for main navigation.
@@ -22,8 +23,8 @@ function NavBar() {
         <span style={{ fontWeight: 700 }}>OmniBook AI</span>
       </div>
       <div style={{ display: "flex", gap: 16, alignItems: "center" }}>
-        <a
-          href="/"
+        <Link
+          to="/"
           style={{
             color: "var(--text-color)",
             textDecoration: "none",
@@ -33,9 +34,9 @@ function NavBar() {
           aria-label={t("home")}
         >
           {t("home")}
-        </a>
-        <a
-          href="/bookings"
+        </Link>
+        <Link
+          to="/bookings"
           style={{
             color: "var(--text-color)",
             textDecoration: "none",
@@ -45,9 +46,9 @@ function NavBar() {
           aria-label={t("bookings")}
         >
           {t("bookings")}
-        </a>
-        <a
-          href="/dashboard"
+        </Link>
+        <Link
+          to="/dashboard"
           style={{
             color: "var(--accent)",
             textDecoration: "none",
@@ -56,7 +57,7 @@ function NavBar() {
           aria-label={t("dashboard")}
         >
           {t("dashboard")}
-        </a>
+        </Link>
         {/* Language Switcher */}
         <form
           role="form"
