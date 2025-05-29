@@ -21,6 +21,20 @@ function NavBar() {
     >
       <div className="logo" style={{display: "flex", alignItems: "center"}}>
         <AILogo size={30} style={{ display: "block", marginRight: 0, flexShrink: 0 }} />
+        <span
+          style={{
+            fontWeight: 800,
+            fontSize: "1.23rem",
+            color: "var(--kavia-orange)",
+            letterSpacing: ".01em",
+            marginLeft: "9px",
+            textTransform: "lowercase",
+            userSelect: "none"
+          }}
+          aria-label="OmniBook AI brand"
+        >
+          omnibook ai
+        </span>
       </div>
       <div style={{ display: "flex", gap: 16, alignItems: "center" }}>
         <Link
