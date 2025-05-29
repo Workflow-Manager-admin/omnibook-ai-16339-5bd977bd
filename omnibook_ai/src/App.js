@@ -7,6 +7,7 @@ import SideBar from './components/Layout/SideBar';
 import Footer from './components/Layout/Footer';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import MultiLangProvider from './contexts/MultiLangProvider';
+import BookingsProvider from './contexts/BookingsContext';
 import DomainPageStub from './pages/DomainPageStub';
 import ProfilePage from './pages/ProfilePage';
 
@@ -370,28 +371,30 @@ function NotFoundPage() {
 function App() {
   return (
     <MultiLangProvider>
-      <Router>
-        <div className="app">
-          <NavBar />
-          <MainContainer>
-            <div style={{ display: 'flex', minHeight: 'calc(100vh - 64px)' }}>
-              <SideBar />
-              <div style={{ flex: 1 }}>
-                <Routes>
-                  <Route path="/" element={<HomePage />} />
-                  <Route path="/bookings" element={<BookingsPage />} />
-                  <Route path="/profile" element={<ProfilePage />} />
-                  <Route path="/dashboard" element={<AdminVendorDashboard />} />
-                  <Route path="/admin" element={<Navigate to="/dashboard" replace />} />
-                  <Route path="/domain/:domainSlug" element={<DomainPageStub />} />
-                  <Route path="*" element={<NotFoundPage />} />
-                </Routes>
+      <BookingsProvider>
+        <Router>
+          <div className="app">
+            <NavBar />
+            <MainContainer>
+              <div style={{ display: 'flex', minHeight: 'calc(100vh - 64px)' }}>
+                <SideBar />
+                <div style={{ flex: 1 }}>
+                  <Routes>
+                    <Route path="/" element={<HomePage />} />
+                    <Route path="/bookings" element={<BookingsPage />} />
+                    <Route path="/profile" element={<ProfilePage />} />
+                    <Route path="/dashboard" element={<AdminVendorDashboard />} />
+                    <Route path="/admin" element={<Navigate to="/dashboard" replace />} />
+                    <Route path="/domain/:domainSlug" element={<DomainPageStub />} />
+                    <Route path="*" element={<NotFoundPage />} />
+                  </Routes>
+                </div>
               </div>
-            </div>
-          </MainContainer>
-          <Footer />
-        </div>
-      </Router>
+            </MainContainer>
+            <Footer />
+          </div>
+        </Router>
+      </BookingsProvider>
     </MultiLangProvider>
   );
 }
