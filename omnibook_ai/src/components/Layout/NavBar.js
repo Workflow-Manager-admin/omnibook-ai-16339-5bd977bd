@@ -19,18 +19,8 @@ function NavBar() {
       tabIndex={0}
       style={{ outline: "none" }}
     >
-      <div className="logo" style={{display: "flex", alignItems: "center", gap: 10}}>
-        <AILogo size={30} style={{ display: "block", marginRight: 3, flexShrink: 0 }} />
-        <span style={{
-          fontWeight: 700,
-          fontSize: "1.12rem",
-          color: "var(--text-color)",
-          letterSpacing: ".01em",
-          display: "block",
-          lineHeight: 1.12
-        }}>
-          AI Workflow Manager Template
-        </span>
+      <div className="logo" style={{display: "flex", alignItems: "center"}}>
+        <AILogo size={30} style={{ display: "block", marginRight: 0, flexShrink: 0 }} />
       </div>
       <div style={{ display: "flex", gap: 16, alignItems: "center" }}>
         <Link
