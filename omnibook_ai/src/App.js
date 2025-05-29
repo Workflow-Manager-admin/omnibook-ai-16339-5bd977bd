@@ -41,7 +41,7 @@ function HomePage() {
   );
 }
 
-import React, { useState } from 'react';
+ 
 // PUBLIC_INTERFACE
 function BookingsPage() {
   /**
