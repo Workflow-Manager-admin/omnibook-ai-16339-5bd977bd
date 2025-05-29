@@ -350,9 +350,45 @@ function BookingsPage() {
           </select>
         </label>
         {purpose &&
-          <div style={{ display: "flex", flexDirection: "column", gap: 13, marginTop: 8 }}>
-            {renderBookingForm()}
-            <button className="btn btn-large" style={{ marginTop: 11, fontWeight: 600, alignSelf: "flex-start" }}>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              gap: 18,
+              marginTop: 8,
+              flexWrap: "wrap",
+              alignItems: "flex-end"
+            }}
+          >
+            {/* Render all text/select fields in a horizontal row */}
+            <div style={{ display: "flex", flexDirection: "row", gap: 18, flexWrap: "wrap", alignItems: "flex-end", flex: 1 }}>
+              {React.Children.map(renderBookingForm(), field =>
+                // For <label> or fragment: inject style to ensure vertical alignment and field size
+                field
+                  ? React.cloneElement(field, {
+                      style: {
+                        ...((field.props || {}).style || {}),
+                        display: "flex",
+                        flexDirection: "column",
+                        minWidth: 140,
+                        margin: 0,
+                        flex: "1 1 120px"
+                      }
+                    })
+                  : null
+              )}
+            </div>
+            <button
+              className="btn btn-large"
+              style={{
+                marginTop: 0,
+                fontWeight: 600,
+                alignSelf: "flex-end",
+                whiteSpace: "nowrap",
+                minWidth: 110,
+                height: 48
+              }}
+            >
               Book Now
             </button>
           </div>
