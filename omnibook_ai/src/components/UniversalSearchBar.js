@@ -30,9 +30,9 @@ function UniversalSearchBar() {
         maxWidth: 720,
         margin: "0 auto",
         zIndex: 21,
-        // Sits at top of main/homepage
         position: "relative",
-        padding: "clamp(22px,4vw,30px) clamp(7vw, 0.3rem, 23px) 0 clamp(7vw, 0.3rem, 23px)"
+        /* This padding will be further controlled by .homepage-searchbar-wrap now */
+        padding: "clamp(8px,2vw,18px) clamp(7vw, 0.3rem, 23px) 0 clamp(7vw, 0.3rem, 23px)"
       }}
     >
       <form
