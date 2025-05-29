@@ -73,3 +73,26 @@ SyntaxError
 
 webpack compiled with 1 error
 Compiling...
+Failed to compile.
+
+Syntax error: /home/kavia/workspace/code-generation/omnibook-ai-16339-5bd977bd/omnibook_ai/src/App.css At-rule without name (7147:2)
+  7145 |     min-height: calc(100vh - 56px);
+  7146 |   }
+> 7147 | }@/* Ensure MainContainer/content always starts below the fixed navbar and is responsive */
+       |  ^
+  7148 | .main-container {
+  7149 |   margin-top: 64px;
+ERROR in ./src/App.css (./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[5].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[5].use[2]!./node_modules/source-map-loader/dist/cjs.js!./src/App.css)
+Module build failed (from ./node_modules/postcss-loader/dist/cjs.js):
+SyntaxError
+
+(7147:2) /home/kavia/workspace/code-generation/omnibook-ai-16339-5bd977bd/omnibook_ai/src/App.css At-rule without name
+
+  7145 |     min-height: calc(100vh - 56px);
+  7146 |   }
+> 7147 | }@/* Ensure MainContainer/content always starts below the fixed navbar and is responsive */
+       |  ^
+  7148 | .main-container {
+  7149 |   margin-top: 64px;
+
+webpack compiled with 1 error
