@@ -34,28 +34,37 @@ function NavBar() {
             display: "flex",
             alignItems: "center",
             textDecoration: "none",
-            minWidth: 0
+            minWidth: 0,
+            gap: 9
           }}
           aria-label="OmniBook AI Home (Logo)"
         >
-          <AILogo size={30} style={{ display: "block", flexShrink: 0 }} />
+          <AILogo size={32} style={{ display: "block", flexShrink: 0 }} />
           <span
             style={{
+              marginLeft: 3,
               fontWeight: 900,
-              fontSize: "1.22rem",
+              fontSize: "1.31rem",
               color: "var(--kavia-orange)",
-              letterSpacing: ".01em",
-              marginLeft: "9px",
+              letterSpacing: ".03em",
+              lineHeight: 1.11,
               textTransform: "lowercase",
-              userSelect: "none",
               fontFamily: "'Inter', 'Roboto', sans-serif",
-              lineHeight: 1.1,
+              userSelect: "none",
+              display: "inline-block",
               whiteSpace: "nowrap",
-              display: "inline-block"
+              verticalAlign: "middle",
+              textShadow: "0 2px 8px rgba(0,0,0,0.05)"
             }}
             aria-label="OmniBook AI brand"
           >
-            omnibook&nbsp;<span style={{ color: "var(--accent)" }}>ai</span>
+            omnibook
+            <span style={{
+              color: "var(--accent)",
+              fontWeight: 900,
+              marginLeft: 2,
+              textShadow: "0 1px 7px #4442"
+            }}>ai</span>
           </span>
         </Link>
       </div>
