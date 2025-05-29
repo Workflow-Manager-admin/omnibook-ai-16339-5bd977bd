@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 /**
  * PUBLIC_INTERFACE
@@ -7,16 +8,29 @@ import React from "react";
  */
 // PUBLIC_INTERFACE
 function DomainQuickFilters() {
-  // Later: fetch these from API.
+  /**
+   * Defines the quick filter domains and their metadata
+   * Each chip will navigate to /domain/:domainSlug
+   */
   const domains = [
-    { label: "Movies", color: "var(--accent)", icon: "🎬" },
-    { label: "Sports", color: "var(--kavia-orange)", icon: "🏏" },
-    { label: "Travel", color: "var(--kavia-orange)", icon: "✈️" },
-    { label: "Concerts", color: "var(--accent)", icon: "🎤" },
-    { label: "Events", color: "var(--accent)", icon: "🎪" },
-    { label: "Venues", color: "var(--kavia-orange)", icon: "🏟️" },
-    { label: "Resorts", color: "var(--kavia-orange)", icon: "🏝️" },
+    { label: "Movies", color: "var(--accent)", icon: "🎬", slug: "movies" },
+    { label: "Sports", color: "var(--kavia-orange)", icon: "🏏", slug: "sports" },
+    { label: "Travel", color: "var(--kavia-orange)", icon: "✈️", slug: "travel" },
+    { label: "Concerts", color: "var(--accent)", icon: "🎤", slug: "concerts" },
+    { label: "Events", color: "var(--accent)", icon: "🎪", slug: "events" },
+    { label: "Venues", color: "var(--kavia-orange)", icon: "🏟️", slug: "venues" },
+    { label: "Resorts", color: "var(--kavia-orange)", icon: "🏝️", slug: "resorts" },
   ];
+
+  const navigate = useNavigate();
+
+  /**
+   * Handles clicks on filter chips, routing to a domain's page
+   * @param {string} slug
+   */
+  function handleDomainClick(slug) {
+    navigate(`/domain/${slug}`);
+  }
 
   return (
     <div
@@ -51,7 +65,8 @@ function DomainQuickFilters() {
             cursor: "pointer",
             transition: "background .17s"
           }}
-          // Add domain click logic later
+          onClick={() => handleDomainClick(d.slug)}
+          aria-label={`Filter by ${d.label}`}
         >
           <span>{d.icon}</span>
           {d.label}
