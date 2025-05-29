@@ -48,8 +48,6 @@ function HomePage() {
  * Bookings page featuring a purpose dropdown, contextual forms for sports/movies/travel/venues/resorts/local events/concerts,
  * saves bookings locally and displays history. Polished UI inline with app styling.
  */
-import { useBookings } from './contexts/BookingsContext';
-
 function BookingsPage() {
   // Options for dropdown: "purpose"
   const PURPOSE_OPTIONS = [
