@@ -1,9 +1,39 @@
+/* OmniBook AI Theming: Black-Orange-Auto Palette */
+
+/* Light theme (defaults; will be overridden in dark) */
 :root {
-  --kavia-orange: #E87A41;
-  --kavia-dark: #1A1A1A;
-  --text-color: #ffffff;
-  --text-secondary: rgba(255, 255, 255, 0.7);
-  --border-color: rgba(255, 255, 255, 0.1);
+  --primary-bg: #ffffff;
+  --primary-text: #181818;
+  --secondary-bg: #f7f7f7;
+  --kavia-black: #000000;
+  --kavia-orange: #FF6600;
+  --accent: #FFA500;
+  --text-color: #181818;
+  --text-secondary: rgba(24, 24, 24, 0.7);
+  --border-color: rgba(24, 24, 24, 0.12);
+  --nav-bg: #f7f7f7;
+  --sidebar-bg: #f7f7f7;
+  --footer-bg: #eaeaea;
+  --surface: #ffffff;
+}
+
+/* Auto/Dark mode overrides */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --primary-bg: #000000;
+    --primary-text: #ffffff;
+    --secondary-bg: #181818;
+    --kavia-black: #000000;
+    --kavia-orange: #FF6600;
+    --accent: #FFA500;
+    --text-color: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.7);
+    --border-color: rgba(255, 255, 255, 0.14);
+    --nav-bg: #181818;
+    --sidebar-bg: #111111;
+    --footer-bg: #1a1a1a;
+    --surface: #131313;
+  }
 }
 
 body {
