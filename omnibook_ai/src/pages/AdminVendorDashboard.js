@@ -28,7 +28,7 @@ function AdminVendorDashboard() {
   // Example: const [filter, setFilter] = React.useState("");
 
   return (
-    <div className="container" style={{ marginTop: 40 }}>
+    <div className="container" style={{ marginTop: 32 }}>
       <div style={{
         fontWeight: 700,
         fontSize: "1.5rem",
