@@ -1,13 +1,16 @@
 import React, { useState } from "react";
+import { useMultiLang } from "../contexts/MultiLangProvider";
 
 /**
  * PUBLIC_INTERFACE
  * UniversalSearchBar enables users to perform global, cross-domain search.
  * Uses the brand's black/orange palette and responsive container.
+ * Now supports translations and ARIA enhancements.
  */
 // PUBLIC_INTERFACE
 function UniversalSearchBar() {
   const [query, setQuery] = useState("");
+  const { t } = useMultiLang();
 
   // Dummy intent tags for demonstration only
   const suggestions = [
@@ -31,6 +34,9 @@ function UniversalSearchBar() {
         flexDirection: "column",
         alignItems: "stretch",
       }}
+      role="search"
+      aria-label={t("searchLabel")}
+      tabIndex={0}
     >
       <label htmlFor="universal-search-input" style={{
         color: "var(--text-secondary)",
@@ -38,8 +44,9 @@ function UniversalSearchBar() {
         marginBottom: 6,
         fontWeight: 500,
         letterSpacing: 0.2,
+        cursor: "pointer"
       }}>
-        Search anything — movies, sports, flights, events, venues...
+        {t("searchLabel")}
       </label>
       <div style={{
         display: "flex",
@@ -51,10 +58,12 @@ function UniversalSearchBar() {
       }}>
         <input
           id="universal-search-input"
+          name="universalSearch"
           type="text"
           value={query}
           onChange={e => setQuery(e.target.value)}
-          placeholder="Try 'cricket finals tickets' or 'find jazz concerts nearby'"
+          placeholder={t("searchPlaceholder")}
+          aria-label={t("searchLabel")}
           style={{
             flex: 1,
             border: "none",
@@ -68,6 +77,7 @@ function UniversalSearchBar() {
         />
         <button
           type="button"
+          aria-label={t("searchButton")}
           style={{
             background: "var(--kavia-orange)",
             color: "white",
@@ -80,7 +90,7 @@ function UniversalSearchBar() {
             cursor: "pointer"
           }}
         >
-          Search
+          {t("searchButton")}
         </button>
       </div>
       {/* Fake suggestions for UI illustration */}
@@ -106,7 +116,13 @@ function UniversalSearchBar() {
               border: "1px solid var(--border-color)",
               transition: "background .13s"
             }}
+            tabIndex={0}
+            role="button"
+            aria-label={s}
             onClick={() => setQuery(s)}
+            onKeyDown={e => {
+              if (e.key === "Enter" || e.key === " ") setQuery(s);
+            }}
           >
             {s}
           </span>
