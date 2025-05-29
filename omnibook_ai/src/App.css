@@ -114,6 +114,32 @@ body {
   }
 }
 
+/* Homepage hero layout improvements */
+.homepage-hero-section {
+  width: 100%;
+  background: var(--primary-bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 0;
+  position: relative;
+}
+
+.homepage-searchbar-wrap {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  /* Sits below nav, but is not overlapped thanks to padding and stacking context */
+  padding-top: max(48px, 7vw);
+  z-index: 2;
+  position: relative;
+}
+
+/* If you ever need to adjust space from NavBar, tweak .homepage-searchbar-wrap padding-top accordingly */
+
 .container {
   max-width: 900px;
   margin: 0 auto;
@@ -123,8 +149,8 @@ body {
 }
 
 .hero {
-  /* Reduced top padding to avoid too much gap when search bar is at the top */
-  padding-top: 38px;
+  /* Avoid excessive top padding (now that search bar is separated above) */
+  padding-top: 30px;
   padding-bottom: 64px;
   text-align: center;
   display: flex;
