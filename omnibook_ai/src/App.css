@@ -138,14 +138,21 @@ body {
 }
 
 .hero {
-  /* Avoid excessive top padding (now that search bar is separated above) */
-  padding-top: 30px;
-  padding-bottom: 64px;
+  /* Padding ensures below nav-bar, avoids whitespace after search bar removed */
+  padding-top: 38px;
+  padding-bottom: 54px;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 24px;
+}
+
+@media (max-width: 600px) {
+  .hero {
+    padding-top: 24px;
+    padding-bottom: 38px;
+  }
 }
 
 .subtitle {
