@@ -26,7 +26,6 @@ function HomePage() {
   return (
     <div className="container">
       <div className="hero">
-        <div className="subtitle">AI Workflow Manager Template</div>
         <h1 className="title">omnibook_ai</h1>
         <div className="description">
           Welcome to OmniBook AI. Start building your application.
