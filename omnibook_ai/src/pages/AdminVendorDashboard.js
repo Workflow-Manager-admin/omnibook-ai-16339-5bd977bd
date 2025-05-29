@@ -2,12 +2,24 @@ import React from "react";
 import RevenueWidget from "../components/AdminWidgets/RevenueWidget";
 import TicketSalesWidget from "../components/AdminWidgets/TicketSalesWidget";
 import VisitorsWidget from "../components/AdminWidgets/VisitorsWidget";
+import { useBookings } from "../contexts/BookingsContext";
 
 // PUBLIC_INTERFACE
 /**
- * AdminVendorDashboard – displays admin/vendor analytics and management widgets.
+ * AdminVendorDashboard – displays admin/vendor analytics, management widgets and booking history.
  */
 function AdminVendorDashboard() {
+  const { bookings } = useBookings();
+
+  // Columns we want: Purpose, Details (summary), Timestamp
+  function bookingDetailsSummary(data) {
+    // Combine all fields into a string summary
+    return Object.entries(data)
+      .map(([field, val]) => (
+        `${field.replace(/([A-Z])/g, " $1").replace(/^./, x => x.toUpperCase())}: ${val}`
+      )).join(" | ");
+  }
+
   return (
     <div className="container" style={{ marginTop: 40 }}>
       <div style={{
@@ -35,6 +47,62 @@ function AdminVendorDashboard() {
         <TicketSalesWidget />
         <VisitorsWidget />
       </div>
+
+      {/* Booking History Table */}
+      <div style={{
+        marginTop: 34,
+        marginBottom: 16,
+        fontWeight: 600,
+        fontSize: "1.2rem",
+        color: "var(--primary-text)"
+      }}>
+        Booking History
+      </div>
+      {
+        !bookings.length ? (
+          <div style={{ color: "var(--text-secondary)", marginBottom: 22 }}>No bookings made yet.</div>
+        ) : (
+          <div style={{
+            overflowX: "auto",
+            marginBottom: 24,
+            background: "var(--surface)",
+            borderRadius: 10,
+            boxShadow: "0 1px 7px rgba(0,0,0,.04)",
+            border: "1.3px solid var(--border-color)"
+          }}>
+            <table style={{
+              width: "100%",
+              borderCollapse: "collapse",
+              minWidth: 480,
+              fontSize: "1.02rem",
+            }}>
+              <thead>
+                <tr style={{ background: "var(--sidebar-bg)" }}>
+                  <th style={{ textAlign: "left", padding: "10px 16px", color: "var(--kavia-orange)", fontWeight: 700 }}>#</th>
+                  <th style={{ textAlign: "left", padding: "10px 16px", color: "var(--kavia-orange)", fontWeight: 700 }}>Purpose</th>
+                  <th style={{ textAlign: "left", padding: "10px 16px", color: "var(--kavia-orange)", fontWeight: 700 }}>Details</th>
+                  <th style={{ textAlign: "left", padding: "10px 16px", color: "var(--kavia-orange)", fontWeight: 700 }}>Timestamp</th>
+                </tr>
+              </thead>
+              <tbody>
+                {bookings.map((booking, idx) => (
+                  <tr key={booking.id} style={{ borderBottom: "1px solid var(--border-color)" }}>
+                    <td style={{ padding: "8px 14px", color: "var(--accent)", fontWeight: 600 }}>{idx + 1}</td>
+                    <td style={{ padding: "8px 14px", fontWeight: 600 }}>{booking.typeLabel || booking.purpose}</td>
+                    <td style={{ padding: "8px 14px", color: "var(--primary-text)" }}>
+                      {bookingDetailsSummary(booking.data)}
+                    </td>
+                    <td style={{ padding: "8px 14px", color: "var(--text-secondary)", whiteSpace: "nowrap" }}>
+                      {booking.timestamp ? (new Date(booking.timestamp).toLocaleString()) : "--"}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )
+      }
+
       <div style={{
         marginTop: 30,
         color: "var(--text-secondary)",
