@@ -33,6 +33,68 @@
     --surface: #131313;
   }
 }
+/* =======================
+   High Contrast Language Dropdown Styles (Brand-consistent)
+   ======================= */
+
+#nav-lang-select,
+select[aria-label="Select language"],
+select[aria-label="selectLanguage"] {
+  background: var(--sidebar-bg, #f7f7f7);
+  color: var(--primary-text, #181818);
+  border: none;
+  border-radius: 7px;
+  font-weight: 600;
+  font-size: .97em;
+  padding: 4px 12px;
+  cursor: pointer;
+  min-width: 54px;
+  appearance: none;
+  box-shadow: 0 1.5px 8px rgba(0,0,0,0.05);
+  outline: none;
+  transition: background 0.16s, color 0.16s;
+}
+
+#nav-lang-select:focus,
+select[aria-label="Select language"]:focus {
+  background: var(--kavia-orange);
+  color: #fff !important;
+}
+
+#nav-lang-select option,
+select[aria-label="Select language"] option {
+  background: var(--surface, #fff);
+  color: var(--primary-text, #181818);
+}
+
+/* For dark mode ensure readable dropdown & options */
+@media (prefers-color-scheme: dark) {
+  #nav-lang-select,
+  select[aria-label="Select language"],
+  select[aria-label="selectLanguage"] {
+    background: var(--sidebar-bg, #181818);
+    color: var(--primary-text, #fff);
+  }
+  #nav-lang-select option,
+  select[aria-label="Select language"] option {
+    background: var(--surface, #131313);
+    color: var(--primary-text, #fff);
+  }
+}
+
+/* Ensure select dropdown arrow is visible */
+/* For basic webkit/browsers: */
+#nav-lang-select::-ms-expand,
+select[aria-label="Select language"]::-ms-expand {
+  display: none;
+}
+#nav-lang-select:-webkit-autofill {
+  background: var(--sidebar-bg) !important;
+  color: var(--primary-text) !important;
+}
+
+/* ======================= */
+
 
 body {
   margin: 0;
