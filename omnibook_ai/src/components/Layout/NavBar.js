@@ -1,34 +1,112 @@
 import React from "react";
+import { useMultiLang } from "../../contexts/MultiLangProvider";
 
 /** PUBLIC_INTERFACE
  * NavBar component for main navigation.
  * Uses CSS class 'navbar' styled with theme variables for auto black-orange theme support.
+ * Now supports multilingual switching and accessibility enhancements.
  */
 function NavBar() {
+  const { lang, setLang, t, supported } = useMultiLang();
+
   return (
-    <nav className="navbar">
+    <nav
+      className="navbar"
+      role="navigation"
+      aria-label="Main navigation"
+      tabIndex={0}
+      style={{ outline: "none" }}
+    >
       <div className="logo">
         <span className="logo-symbol" style={{ color: "var(--kavia-orange)" }}>●</span>
         <span style={{ fontWeight: 700 }}>OmniBook AI</span>
       </div>
-      <div style={{ display: "flex", gap: 16 }}>
-        <a href="/" style={{
-          color: "var(--text-color)",
-          textDecoration: "none",
-          fontWeight: 500,
-          marginRight: 16
-        }}>Home</a>
-        <a href="/bookings" style={{
-          color: "var(--text-color)",
-          textDecoration: "none",
-          fontWeight: 500,
-          marginRight: 16
-        }}>Bookings</a>
-        <a href="/dashboard" style={{
-          color: "var(--accent)",
-          textDecoration: "none",
-          fontWeight: 600
-        }}>Dashboard</a>
+      <div style={{ display: "flex", gap: 16, alignItems: "center" }}>
+        <a
+          href="/"
+          style={{
+            color: "var(--text-color)",
+            textDecoration: "none",
+            fontWeight: 500,
+            marginRight: 16,
+          }}
+          aria-label={t("home")}
+        >
+          {t("home")}
+        </a>
+        <a
+          href="/bookings"
+          style={{
+            color: "var(--text-color)",
+            textDecoration: "none",
+            fontWeight: 500,
+            marginRight: 16,
+          }}
+          aria-label={t("bookings")}
+        >
+          {t("bookings")}
+        </a>
+        <a
+          href="/dashboard"
+          style={{
+            color: "var(--accent)",
+            textDecoration: "none",
+            fontWeight: 600,
+          }}
+          aria-label={t("dashboard")}
+        >
+          {t("dashboard")}
+        </a>
+        {/* Language Switcher */}
+        <form
+          role="form"
+          aria-label={t("selectLanguage")}
+          style={{
+            marginLeft: 18,
+            display: "flex",
+            alignItems: "center",
+            gap: 6,
+            background: "var(--nav-bg)",
+            borderRadius: 7,
+            padding: "3.5px 7px",
+          }}
+          onSubmit={e => e.preventDefault()}
+        >
+          <label
+            htmlFor="nav-lang-select"
+            style={{
+              color: "var(--text-secondary)",
+              fontWeight: 500,
+              fontSize: ".97em",
+              marginRight: 2,
+              cursor: "pointer",
+            }}
+            aria-label={t("language")}
+          >
+            🌐
+          </label>
+          <select
+            id="nav-lang-select"
+            value={lang}
+            onChange={e => setLang(e.target.value)}
+            aria-label={t("selectLanguage")}
+            style={{
+              border: "none",
+              outline: "none",
+              background: "none",
+              color: "var(--text-color)",
+              fontWeight: 600,
+              fontSize: ".97em",
+              cursor: "pointer",
+            }}
+          >
+            {supported.map((lng) => (
+              <option key={lng} value={lng}>
+                {lng.toUpperCase()}
+              </option>
+            ))}
+          </select>
+        </form>
       </div>
     </nav>
   );
