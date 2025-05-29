@@ -47,6 +47,8 @@ function HomePage() {
  * Bookings page featuring a purpose dropdown, contextual forms for sports/movies/travel/venues/resorts/local events/concerts,
  * saves bookings locally and displays history. Polished UI inline with app styling.
  */
+import { useBookings } from './contexts/BookingsContext';
+
 function BookingsPage() {
   // Options for dropdown: "purpose"
   const PURPOSE_OPTIONS = [
@@ -62,7 +64,8 @@ function BookingsPage() {
   // Main state
   const [purpose, setPurpose] = useState('');
   const [formData, setFormData] = useState({});
-  const [bookings, setBookings] = useState([]);
+  // Bookings now pulled from context!
+  const { bookings, addBooking } = useBookings();
 
   // Reset form on dropdown change
   function handlePurposeChange(e) {
@@ -236,23 +239,22 @@ function BookingsPage() {
     }
   }
 
-  // Save booking, reset form
+  // Submit booking to BookingsContext, reset form
   function handleBookingSubmit(e) {
     e.preventDefault();
     if (!purpose) return;
-    setBookings(bks => [
-      ...bks,
-      {
-        id: Date.now(),
-        typeLabel: (PURPOSE_OPTIONS.find(x => x.value === purpose) || {}).label,
-        data: { ...formData }
-      }
-    ]);
+    addBooking({
+      id: Date.now(),
+      typeLabel: (PURPOSE_OPTIONS.find(x => x.value === purpose) || {}).label,
+      data: { ...formData },
+      purpose,
+      timestamp: new Date().toISOString(),
+    });
     setFormData({});
     setPurpose('');
   }
 
-  // "Polished" booking history rendering
+  // "Polished" booking history rendering (reads from context)
   return (
     <div className="container" style={{ marginTop: 48, maxWidth: 520 }}>
       <div style={{
@@ -329,7 +331,7 @@ function BookingsPage() {
           ? <div style={{ color: "var(--text-secondary)" }}>No bookings yet.</div>
           : (
             <ul style={{ padding: 0, listStyle: "none", margin: 0, display: "flex", flexDirection: "column", gap: 15 }}>
-              {bookings.map(({ id, typeLabel, data }, i) => (
+              {bookings.map(({ id, typeLabel, data, timestamp }, i) => (
                 <li
                   key={id}
                   style={{
@@ -353,6 +355,11 @@ function BookingsPage() {
                       </div>
                     )}
                   </div>
+                  {timestamp &&
+                    <div style={{ color: "var(--text-secondary)", fontSize: ".93em", marginTop: 4 }}>
+                      <span>Booked at: {new Date(timestamp).toLocaleString()}</span>
+                    </div>
+                  }
                 </li>
               ))}
             </ul>
