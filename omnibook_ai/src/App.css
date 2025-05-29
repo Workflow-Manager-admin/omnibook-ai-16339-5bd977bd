@@ -10,7 +10,7 @@
   --text-color: #181818;
   --text-secondary: rgba(24, 24, 24, 0.7);
   --border-color: rgba(24, 24, 24, 0.12);
-  --nav-bg: #f7f7f7;
+  --nav-bg: #000000; /* Changed nav bar background to brand primary color */
   --sidebar-bg: #f7f7f7;
   --footer-bg: #eaeaea;
   --surface: #ffffff;
