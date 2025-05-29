@@ -19,15 +19,13 @@ function NavBar() {
       tabIndex={0}
       style={{ outline: "none" }}
     >
-      <div
-        className="logo"
-        style={{
-          display: "flex",
-          alignItems: "center",
-          gap: 13,
-          minWidth: 0,
-        }}
-      >
+      {/* Brand: Logo + App name, with improved flex layout for responsive fit */}
+      <div className="logo" style={{
+        display: "flex",
+        alignItems: "center",
+        minWidth: 0,
+        gap: 0
+      }}>
         <Link
           to="/"
           style={{
@@ -35,35 +33,50 @@ function NavBar() {
             alignItems: "center",
             textDecoration: "none",
             minWidth: 0,
-            gap: 9
+            gap: 6
           }}
           aria-label="OmniBook AI Home (Logo)"
         >
-          <AILogo size={32} style={{ display: "block", flexShrink: 0 }} />
+          <AILogo size={29} style={{ display: "block", flexShrink: 0 }} />
           <span
+            className="navbar-brandtext"
             style={{
-              marginLeft: 3,
-              fontWeight: 900,
-              fontSize: "1.31rem",
-              color: "var(--kavia-orange)",
-              letterSpacing: ".03em",
-              lineHeight: 1.11,
-              textTransform: "lowercase",
-              fontFamily: "'Inter', 'Roboto', sans-serif",
-              userSelect: "none",
-              display: "inline-block",
-              whiteSpace: "nowrap",
-              verticalAlign: "middle",
-              textShadow: "0 2px 8px rgba(0,0,0,0.05)"
+              display: "flex",
+              alignItems: "baseline",
+              minWidth: 0,
+              marginLeft: 2,
+              maxWidth: "175px", // will be further controlled by CSS
+              overflow: "hidden",
             }}
             aria-label="OmniBook AI brand"
           >
-            omnibook
+            <span style={{
+              fontWeight: 900,
+              fontSize: "1.10rem",
+              color: "var(--kavia-orange)",
+              letterSpacing: "0.011em",
+              lineHeight: 1.08,
+              textTransform: "lowercase",
+              fontFamily: "'Inter', 'Roboto', sans-serif",
+              userSelect: "none",
+              whiteSpace: "nowrap",
+              textShadow: "0 2px 8px rgba(0,0,0,0.08)",
+              flexShrink: 1,
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+            }}>
+              omnibook
+            </span>
             <span style={{
               color: "var(--accent)",
               fontWeight: 900,
               marginLeft: 2,
-              textShadow: "0 1px 7px #4442"
+              fontSize: "1.03rem",
+              textShadow: "0 1px 7px #4442",
+              letterSpacing: 0,
+              lineHeight: 1.08,
+              flexShrink: 0,
+              whiteSpace: "nowrap"
             }}>ai</span>
           </span>
         </Link>

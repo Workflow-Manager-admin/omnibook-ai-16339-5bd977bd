@@ -70,7 +70,20 @@ body {
   font-weight: 600;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 0;  /* tighter by default, gap in child via CSS/JS */
+  min-width: 0;
+  flex-shrink: 1;
+  overflow: visible;
+}
+
+/* Aesthetic fit for "omnibook ai" beside logo in nav: allow truncation and tighter spacing */
+.navbar-brandtext {
+  display: flex;
+  align-items: baseline;
+  min-width: 0;
+  max-width: 168px;
+  flex-shrink: 1;
+  overflow: hidden;
 }
 
 .logo-symbol {
