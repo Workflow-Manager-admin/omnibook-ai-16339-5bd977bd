@@ -8,6 +8,7 @@ import Footer from './components/Layout/Footer';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import MultiLangProvider from './contexts/MultiLangProvider';
 import DomainPageStub from './pages/DomainPageStub';
+import ProfilePage from './pages/ProfilePage';
 
 // Stubs for routed pages
 // PUBLIC_INTERFACE
@@ -31,12 +32,6 @@ function HomePage() {
 function BookingsPage() {
   /** Bookings page stub */
   return <div className="container"><h2>Bookings</h2><p>All your booking domains in one unified view.</p></div>;
-}
-
-// PUBLIC_INTERFACE
-function ProfilePage() {
-  /** Profile page stub */
-  return <div className="container"><h2>User Profile</h2><p>Manage your details and settings here.</p></div>;
 }
 
 // PUBLIC_INTERFACE
