@@ -8,8 +8,8 @@ import Footer from './components/Layout/Footer';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 
 // Stubs for routed pages
+// PUBLIC_INTERFACE
 function HomePage() {
-  // PUBLIC_INTERFACE
   /** Home page stub */
   return (
     <div className="container">
