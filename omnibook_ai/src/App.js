@@ -75,7 +75,7 @@ function HomePage() {
             </span>
           </h1>
           <div className="description">
-            Welcome to OmniBook AI. Start building your application.
+            Welcome to OmniBook AI.
           </div>
           <button
             className="btn btn-large"
