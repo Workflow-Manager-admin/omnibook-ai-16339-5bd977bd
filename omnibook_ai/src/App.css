@@ -121,13 +121,13 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  /* With search bar gone, align to top with content spaced properly from nav */
   margin-top: 0;
   margin-bottom: 0;
   padding: 0;
   position: relative;
+  min-height: calc(100vh - 64px); /* Ensures hero section fills below nav, no overlap */
 }
-
-/* If you ever need to adjust space from NavBar, tweak .homepage-searchbar-wrap padding-top accordingly */
 
 .container {
   max-width: 900px;
