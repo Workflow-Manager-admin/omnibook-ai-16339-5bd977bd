@@ -19,22 +19,45 @@ function NavBar() {
       tabIndex={0}
       style={{ outline: "none" }}
     >
-      <div className="logo" style={{display: "flex", alignItems: "center"}}>
-        <AILogo size={30} style={{ display: "block", marginRight: 0, flexShrink: 0 }} />
-        <span
+      <div
+        className="logo"
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: 13,
+          minWidth: 0,
+        }}
+      >
+        <Link
+          to="/"
           style={{
-            fontWeight: 800,
-            fontSize: "1.23rem",
-            color: "var(--kavia-orange)",
-            letterSpacing: ".01em",
-            marginLeft: "9px",
-            textTransform: "lowercase",
-            userSelect: "none"
+            display: "flex",
+            alignItems: "center",
+            textDecoration: "none",
+            minWidth: 0
           }}
-          aria-label="OmniBook AI brand"
+          aria-label="OmniBook AI Home (Logo)"
         >
-          omnibook ai
-        </span>
+          <AILogo size={30} style={{ display: "block", flexShrink: 0 }} />
+          <span
+            style={{
+              fontWeight: 900,
+              fontSize: "1.22rem",
+              color: "var(--kavia-orange)",
+              letterSpacing: ".01em",
+              marginLeft: "9px",
+              textTransform: "lowercase",
+              userSelect: "none",
+              fontFamily: "'Inter', 'Roboto', sans-serif",
+              lineHeight: 1.1,
+              whiteSpace: "nowrap",
+              display: "inline-block"
+            }}
+            aria-label="OmniBook AI brand"
+          >
+            omnibook&nbsp;<span style={{ color: "var(--accent)" }}>ai</span>
+          </span>
+        </Link>
       </div>
       <div style={{ display: "flex", gap: 16, alignItems: "center" }}>
         <Link
