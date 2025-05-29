@@ -2,37 +2,20 @@
 > react-kavia@0.1.0 start
 > react-scripts start
 
-(node:5742) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+(node:5987) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
 (Use `node --trace-deprecation ...` to show where the warning was created)
-(node:5742) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+(node:5987) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
 Starting the development server...
 
-Compiled with warnings.
+Compiled successfully!
 
-[eslint] 
-src/components/Layout/NavBar.js
-  Line 75:9:  The element form has an implicit role of form. Defining this explicitly is redundant and should be avoided  jsx-a11y/no-redundant-roles
+You can now view react-kavia in the browser.
 
-Search for the keywords to learn more about each warning.
-To ignore, add // eslint-disable-next-line to the line before.
+  Local:            http://localhost:3000
+  On Your Network:  http://172.17.0.2:3000
 
-WARNING in [eslint] 
-src/components/Layout/NavBar.js
-  Line 75:9:  The element form has an implicit role of form. Defining this explicitly is redundant and should be avoided  jsx-a11y/no-redundant-roles
+Note that the development build is not optimized.
+To create a production build, use npm run build.
 
-webpack compiled with 1 warning
+webpack compiled successfully
 Compiling...
-Compiled with warnings.
-
-[eslint] 
-src/components/Layout/NavBar.js
-  Line 75:9:  The element form has an implicit role of form. Defining this explicitly is redundant and should be avoided  jsx-a11y/no-redundant-roles
-
-Search for the keywords to learn more about each warning.
-To ignore, add // eslint-disable-next-line to the line before.
-
-WARNING in [eslint] 
-src/components/Layout/NavBar.js
-  Line 75:9:  The element form has an implicit role of form. Defining this explicitly is redundant and should be avoided  jsx-a11y/no-redundant-roles
-
-webpack compiled with 1 warning

@@ -1,13 +1,16 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import { useMultiLang } from "../../contexts/MultiLangProvider";
 
 // PUBLIC_INTERFACE
 /**
  * SideBar layout component for OmniBook AI.
  * Applies sidebar section classes and theme variables for dark/auto black-orange palette.
  */
-import { Link } from "react-router-dom";
-
 function SideBar() {
+  // Use translation to label nav items consistently
+  const { t } = useMultiLang();
+
   return (
     <aside
       className="sidebar"
@@ -36,7 +39,7 @@ function SideBar() {
         }}>
           <li>
             <Link to="/bookings" style={{ color: "var(--accent)", textDecoration: "none" }}>
-              Bookings
+              {t("bookings")}
             </Link>
           </li>
           <li>
@@ -45,8 +48,8 @@ function SideBar() {
             </Link>
           </li>
           <li>
-            <Link to="/dashboard" style={{ color: "var(--kavia-orange)", textDecoration: "none" }}>
-              Admin
+            <Link to="/dashboard" style={{ color: "var(--accent)", textDecoration: "none", fontWeight: 600 }}>
+              {t("dashboard")}
             </Link>
           </li>
         </ul>
