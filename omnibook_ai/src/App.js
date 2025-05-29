@@ -6,6 +6,7 @@ import NavBar from './components/Layout/NavBar';
 import SideBar from './components/Layout/SideBar';
 import Footer from './components/Layout/Footer';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import MultiLangProvider from './contexts/MultiLangProvider';
 
 // Stubs for routed pages
 // PUBLIC_INTERFACE
