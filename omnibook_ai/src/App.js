@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import AdminVendorDashboard from './pages/AdminVendorDashboard';
 import MainContainer from './containers/MainContainer';
 import NavBar from './components/Layout/NavBar';
 import SideBar from './components/Layout/SideBar';
