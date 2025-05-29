@@ -207,3 +207,9 @@ src/App.js
   Line 40:7:  Parsing error: Identifier 'AdminVendorDashboard' has already been declared. (40:7)
 
 webpack compiled with 2 errors
+Compiling...
+Compiled successfully!
+webpack compiled successfully
+Compiling...
+Compiled successfully!
+webpack compiled successfully
