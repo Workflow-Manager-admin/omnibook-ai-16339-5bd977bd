@@ -36,10 +36,11 @@ function ProfilePage() {
   return <div className="container"><h2>User Profile</h2><p>Manage your details and settings here.</p></div>;
 }
 
+import AdminVendorDashboard from './pages/AdminVendorDashboard';
 // PUBLIC_INTERFACE
 function DashboardPage() {
   /** Admin/vendor dashboard stub */
-  return <div className="container"><h2>Admin & Vendor Dashboard</h2><p>Analytics and management tools go here.</p></div>;
+  return <AdminVendorDashboard />;
 }
 
 // PUBLIC_INTERFACE
