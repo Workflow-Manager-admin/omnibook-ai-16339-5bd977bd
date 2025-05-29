@@ -127,17 +127,6 @@ body {
   position: relative;
 }
 
-.homepage-searchbar-wrap {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  /* Sits below nav, but is not overlapped thanks to padding and stacking context */
-  padding-top: max(48px, 7vw);
-  z-index: 2;
-  position: relative;
-}
-
 /* If you ever need to adjust space from NavBar, tweak .homepage-searchbar-wrap padding-top accordingly */
 
 .container {
