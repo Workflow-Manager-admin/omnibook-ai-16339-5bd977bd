@@ -311,13 +311,7 @@ function BookingsPage() {
       }}>
         Bookings
       </div>
-      <div style={{
-        marginBottom: 22,
-        color: "var(--text-secondary)",
-        fontSize: "1.08rem"
-      }}>
-        Select the booking purpose to see its corresponding form. Your bookings are shown below.
-      </div>
+      {/* Removed instructional text as requested */}
       <form
         onSubmit={handleBookingSubmit}
         style={{
