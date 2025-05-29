@@ -26,8 +26,39 @@ function HomePage() {
   return (
     <div className="container">
       <div className="hero">
-        <h1 className="title" style={{ letterSpacing: "0.01em", textTransform: "lowercase" }}>
-          omnibook&nbsp;<span style={{ color: "var(--accent)" }}>ai</span>
+        <h1
+          className="title"
+          style={{
+            letterSpacing: "0.01em",
+            textTransform: "lowercase",
+            display: "inline-flex",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: 8,
+            fontFamily: "'Inter', 'Roboto', sans-serif"
+          }}
+        >
+          <span
+            style={{
+              color: "var(--kavia-orange)",
+              fontWeight: 800,
+              textShadow: "0 2px 7px #ff970035",
+              marginRight: 3
+            }}
+          >
+            omnibook
+          </span>
+          <span
+            style={{
+              color: "var(--accent)",
+              fontWeight: 900,
+              marginLeft: 0,
+              textShadow: "0 2px 7px #fd0f  ",
+              fontSize: "0.97em"
+            }}
+          >
+            ai
+          </span>
         </h1>
         <div className="description">
           Welcome to OmniBook AI. Start building your application.
