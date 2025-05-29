@@ -90,6 +90,30 @@ body {
   color: var(--kavia-orange);
 }
 
+/* Responsive scaling: mobile tweaks for logo + app name fit */
+@media (max-width: 600px) {
+  .navbar .logo {
+    gap: 0;
+    min-width: 0;
+    font-size: 1.05rem;
+    max-width: 140px;
+  }
+  .navbar-brandtext {
+    max-width: 92vw;
+    font-size: 0.97rem !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .navbar .logo,
+  .navbar-brandtext {
+    max-width: 67vw !important;
+  }
+  .navbar-brandtext span {
+    font-size: 0.97rem !important;
+  }
+}
+
 .container {
   max-width: 900px;
   margin: 0 auto;

@@ -48,3 +48,4 @@ src/components/Layout/NavBar.js
   Line 134:9:  The element form has an implicit role of form. Defining this explicitly is redundant and should be avoided  jsx-a11y/no-redundant-roles
 
 webpack compiled with 1 warning
+Compiling...
