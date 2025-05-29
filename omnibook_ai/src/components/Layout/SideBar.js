@@ -5,6 +5,8 @@ import React from "react";
  * SideBar layout component for OmniBook AI.
  * Applies sidebar section classes and theme variables for dark/auto black-orange palette.
  */
+import { Link } from "react-router-dom";
+
 function SideBar() {
   return (
     <aside
@@ -32,9 +34,21 @@ function SideBar() {
           flexDirection: "column",
           gap: "1rem"
         }}>
-          <li><a href="/bookings" style={{ color: "var(--accent)", textDecoration: "none" }}>Bookings</a></li>
-          <li><a href="/profile" style={{ color: "var(--text-color)", textDecoration: "none" }}>Profile</a></li>
-          <li><a href="/dashboard" style={{ color: "var(--kavia-orange)", textDecoration: "none" }}>Admin</a></li>
+          <li>
+            <Link to="/bookings" style={{ color: "var(--accent)", textDecoration: "none" }}>
+              Bookings
+            </Link>
+          </li>
+          <li>
+            <Link to="/profile" style={{ color: "var(--text-color)", textDecoration: "none" }}>
+              Profile
+            </Link>
+          </li>
+          <li>
+            <Link to="/dashboard" style={{ color: "var(--kavia-orange)", textDecoration: "none" }}>
+              Admin
+            </Link>
+          </li>
         </ul>
       </div>
     </aside>
