@@ -38,11 +38,6 @@ function ProfilePage() {
 }
 
 import AdminVendorDashboard from './pages/AdminVendorDashboard';
-// PUBLIC_INTERFACE
-function DashboardPage() {
-  /** Admin/vendor dashboard stub */
-  return <AdminVendorDashboard />;
-}
 
 // PUBLIC_INTERFACE
 function NotFoundPage() {
@@ -63,7 +58,7 @@ function App() {
                 <Route path="/" element={<HomePage />} />
                 <Route path="/bookings" element={<BookingsPage />} />
                 <Route path="/profile" element={<ProfilePage />} />
-                <Route path="/dashboard" element={<DashboardPage />} />
+                <Route path="/dashboard" element={<AdminVendorDashboard />} />
                 <Route path="/admin" element={<Navigate to="/dashboard" replace />} />
                 <Route path="*" element={<NotFoundPage />} />
               </Routes>
