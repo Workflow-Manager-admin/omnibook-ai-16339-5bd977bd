@@ -6,9 +6,10 @@ import SeatMapAR from './components/SeatMapAR';
 import Notifications from './components/Notifications';
 import ChatSupport from './components/ChatSupport';
 import UniversalSearch from './components/UniversalSearch';
+import AdminPortal from './components/AdminPortal';
 
- // PUBLIC_INTERFACE
- // Home page: Displays only a welcome message and a button that navigates to Booking
+// PUBLIC_INTERFACE
+// Home page: Displays only a welcome message and a button that navigates to Booking
 function Home() {
   const navigate = useNavigate();
 
@@ -78,8 +79,6 @@ function Booking() {
     </div>
   );
 }
-
-import AdminPortal from './components/AdminPortal';
 
 function Layout() {
   return (
