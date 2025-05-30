@@ -4,8 +4,14 @@
   --secondary: #FF6600;
   --accent: #FFA500;
   --text-color: #fff;
-  --text-secondary: rgba(255,255,255,0.75);
-  --border-color: rgba(255, 255, 255, 0.2);
+  --text-secondary: rgba(255,255,255,0.82); /* increased alpha for better contrast */
+  --border-color: rgba(255, 255, 255, 0.23);
+
+  /* Accessibility contrast on orange backgrounds */
+  --button-text-contrast: #fff;
+
+  /* Focus outline accessibility */
+  --focus-outline: 2px solid #FFA500;
 
   /* Legacy support: map to new variables */
   --kavia-orange: var(--secondary);
