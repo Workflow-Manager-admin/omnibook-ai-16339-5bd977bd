@@ -6,18 +6,18 @@ import SeatMapAR from './components/SeatMapAR';
 import Notifications from './components/Notifications';
 import ChatSupport from './components/ChatSupport';
 
-// PUBLIC_INTERFACE
-// Minimal Home: shows only welcome message and "Go to Booking" button
+ // PUBLIC_INTERFACE
+ // Home page: Only show welcome message & router button to Booking
 function Home() {
   const navigate = useNavigate();
   return (
     <div className="main-content-inner single-page" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '80vh' }}>
       <div className="card-section" style={{ textAlign: 'center', maxWidth: 470, margin: '0 auto', padding: '46px 27px' }}>
-        <div className="subtitle" style={{ color: 'var(--kavia-orange)', fontWeight: 600, marginBottom: 8, fontSize: '1.15em' }}>
+        <div className="subtitle" style={{ color: 'var(--kavia-orange)', fontWeight: 600, marginBottom: 8, fontSize: '1.2em' }}>
           Welcome to OmniBook AI
         </div>
-        <div className="description" style={{ marginBottom: 36, fontWeight: 500 }}>
-          Start your seamless booking journey across sports, movies, travel, and more.
+        <div className="description" style={{ marginBottom: 36, fontWeight: 500, fontSize: '1.08rem' }}>
+          Start your seamless booking journey.
         </div>
         <button
           className="btn btn-large"
