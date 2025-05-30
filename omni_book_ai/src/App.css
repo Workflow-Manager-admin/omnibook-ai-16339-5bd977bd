@@ -1,9 +1,29 @@
 :root {
-  --kavia-orange: #E87A41;
-  --kavia-dark: #1A1A1A;
-  --text-color: #ffffff;
-  --text-secondary: rgba(255, 255, 255, 0.7);
-  --border-color: rgba(255, 255, 255, 0.1);
+  /* Primary Theme Variables: Black-Orange Style */
+  --primary: #000000;
+  --secondary: #FF6600;
+  --accent: #FFA500;
+  --text-color: #fff;
+  --text-secondary: rgba(255,255,255,0.75);
+  --border-color: rgba(255, 255, 255, 0.2);
+
+  /* Legacy support: map to new variables */
+  --kavia-orange: var(--secondary);
+  --kavia-dark: var(--primary);
+}
+
+/* Supports light mode for future auto theme switching */
+@media (prefers-color-scheme: light) {
+  :root {
+    --primary: #fff;
+    --secondary: #FF6600;
+    --accent: #FFA500;
+    --text-color: #000;
+    --text-secondary: rgba(0,0,0,0.7);
+    --border-color: rgba(0, 0, 0, 0.1);
+    --kavia-dark: var(--primary);
+    --kavia-orange: var(--secondary);
+  }
 }
 
 body {
