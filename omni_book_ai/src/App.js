@@ -11,8 +11,6 @@ import UniversalSearch from './components/UniversalSearch';
  // Home page: Only show a welcome message and navigation button to Booking
 function Home() {
   const navigate = useNavigate();
-
-  // Minimal Home: welcome message + booking button only
   return (
     <div
       className="main-content-inner single-page"
@@ -37,7 +35,7 @@ function Home() {
           style={{
             color: 'var(--kavia-orange)',
             fontWeight: 600,
-            marginBottom: 8,
+            marginBottom: 12,
             fontSize: '1.25em'
           }}
         >
