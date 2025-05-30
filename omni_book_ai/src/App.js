@@ -8,46 +8,40 @@ import BookingFlow from './components/BookingFlow';
 import SeatMapAR from './components/SeatMapAR';
 import Notifications from './components/Notifications';
 import ChatSupport from './components/ChatSupport';
-// import AdminDashboardLink from './components/AdminDashboardLink'; // Direct link replaced with router link
 import { NavLink, Routes, Route, Outlet } from 'react-router-dom';
-
-// Stub route page components
 
 /**
  * PUBLIC_INTERFACE
- * Home page with grid for all principal sections, ensuring non-overlapping and clear hierarchy.
+ * Home page: now arranges filters vertically at left, with main content in card grid to the right.
  */
 function Home() {
   return (
-    <div className="homepage-grid">
-      {/* Filter & Quick-access Buttons */}
-      <div className="grid-filters">
+    <div className="main-content-inner">
+      <aside className="home-left-rail" aria-label="Main filters and shortcuts">
         <FilterButtons />
-      </div>
-      {/* Trending Events & Recommendations in a two-row grid */}
-      <div className="grid-main-carousels">
-        <div className="carousel-box">
-          <div className="homepage-section-title homepage-trending-title">
-            <span role="img" aria-label="trending">🔥</span> Trending Now
-          </div>
-          <TrendingCarousel />
-        </div>
-        <div className="carousel-box">
+      </aside>
+      <div className="cardstack">
+        <div className="card-section card-wide">
           <div className="homepage-section-title homepage-recommended-title">
             <span role="img" aria-label="recommended">✨</span> Recommended For You
           </div>
           <RecommendationsCarousel />
         </div>
-      </div>
-      {/* Booking & AR seat in responsive row/column */}
-      <div className="grid-booking-ar">
-        <div className="booking-ar-box">
-          <div className="homepage-section-title"><span role="img" aria-label="booking">🎫</span> Book Your Seat</div>
-          <BookingFlow />
+        <div className="card-section">
+          <div className="homepage-section-title homepage-trending-title">
+            <span role="img" aria-label="trending">🔥</span> Trending Now
+          </div>
+          <TrendingCarousel />
         </div>
-        <div className="booking-ar-box">
-          <div className="homepage-section-title"><span role="img" aria-label="ar-seat">🪑</span> AR Seat Map Preview</div>
-          <SeatMapAR />
+        <div className="card-section card-flex">
+          <section className="booking-card-stack">
+            <div className="homepage-section-title"><span role="img" aria-label="booking">🎫</span> Book Your Seat</div>
+            <BookingFlow />
+          </section>
+          <section className="ar-card-stack">
+            <div className="homepage-section-title"><span role="img" aria-label="ar-seat">🪑</span> AR Seat Map Preview</div>
+            <SeatMapAR />
+          </section>
         </div>
       </div>
     </div>
@@ -57,13 +51,15 @@ function Home() {
 // PUBLIC_INTERFACE
 function Booking() {
   return (
-    <div style={{ padding: 40 }}>
-      <h2>Booking Flow</h2>
-      <BookingFlow />
-      <section style={{ margin: '32px 0' }}>
+    <div className="main-content-inner single-page">
+      <div className="card-section">
+        <h2>Booking Flow</h2>
+        <BookingFlow />
+      </div>
+      <div className="card-section">
         <div style={{ fontWeight: 600, fontSize: '1.16rem', color: 'var(--secondary)', marginBottom: 7 }}>🪑 AR Seat Map Preview</div>
         <SeatMapAR />
-      </section>
+      </div>
     </div>
   );
 }
@@ -71,79 +67,84 @@ function Booking() {
 // PUBLIC_INTERFACE
 function AdminPortal() {
   return (
-    <div style={{ padding: 50 }}>
-      <h2>
-        <span style={{ marginRight: 8 }}>🛠️</span>Admin Portal
-      </h2>
-      <div style={{
-        margin: "32px 0",
-        background: "rgba(255,255,255,0.05)",
-        border: "1px dashed var(--kavia-orange)",
-        borderRadius: 10,
-        color: "var(--kavia-orange)",
-        padding: 30,
-      }}>
-        [Admin Portal Placeholder: Analytics / Ticket Management / Vendor Access]
+    <div className="main-content-inner single-page">
+      <div className="card-section">
+        <h2 style={{ marginBottom: 16 }}><span style={{ marginRight: 8 }}>🛠️</span>Admin Portal</h2>
+        <div style={{
+          margin: "16px 0",
+          background: "rgba(255,255,255,0.05)",
+          border: "1px dashed var(--kavia-orange)",
+          borderRadius: 10,
+          color: "var(--kavia-orange)",
+          padding: 30,
+        }}>
+          [Admin Portal Placeholder: Analytics / Ticket Management / Vendor Access]
+        </div>
       </div>
     </div>
   );
 }
 
 function Layout() {
-  // Layout including navbar, search and persistent widgets, with accessibility roles and skip links
   return (
-    <div className="app">
+    <div className="app sidebar-app">
       {/* Skip to main for keyboard users */}
       <a href="#main-content" className="skip-link" tabIndex="0">
         Skip to main content
       </a>
-      {/* Navbar with role="navigation" */}
-      <nav className="navbar" role="navigation" aria-label="Primary">
-        <div className="container" style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+      {/* Sidebar Navigation */}
+      <aside className="sidebar" role="navigation" aria-label="Main sidebar navigation">
+        <div className="sidebar-header">
           <NavLink
             to="/"
             className="logo"
             aria-label="OmniBook homepage"
             style={{ display: 'flex', alignItems: 'center', gap: 8, textDecoration: "none", color: "inherit" }}
           >
-            <span className="logo-symbol" style={{ fontSize: '1.5rem' }}>◎</span> OmniBook <span style={{ fontWeight: '300', color: 'var(--kavia-orange)', marginLeft: 2 }}>AI</span>
+            <span className="logo-symbol" style={{ fontSize: '1.5rem' }}>◎</span> <span>OmniBook</span><span style={{ fontWeight: '300', color: 'var(--kavia-orange)', marginLeft: 2 }}>AI</span>
           </NavLink>
           {/* Universal Search Bar */}
-          <div style={{ flex: 1, marginLeft: 32, marginRight: 32, maxWidth: 400 }}>
+          <div className="sidebar-search">
             <UniversalSearch />
           </div>
-          {/* Quick Actions: dashboard, notification, chat */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-            <NavLink
-              to="/admin"
-              className="btn"
-              style={{
-                background: "var(--kavia-orange)",
-                color: "#fff",
-                borderRadius: 5,
-                fontWeight: 500,
-                fontSize: "1rem",
-                textDecoration: "none",
-                padding: "6px 18px",
-                margin: "0 6px"
-              }}
-              role="button"
-              aria-label="Admin Dashboard"
-              tabIndex={0}
-            >
-              <span style={{ marginRight: 6, fontWeight: 700, fontSize: "1.1rem" }}>🛠️</span>
-              Admin Dashboard
-            </NavLink>
-            <Notifications />
-            <ChatSupport />
-          </div>
         </div>
-      </nav>
-      {/* Main Content Area with space for nav + padding */}
-      <main id="main-content" tabIndex={-1} role="main" aria-label="Content Main Area">
-        <div className="container" style={{ paddingTop: 96, paddingBottom: 36 }}>
-          <Outlet />
+        <nav className="sidebar-nav" aria-label="Main sections">
+          <NavLink
+            to="/"
+            className="sidebar-nav-link"
+            aria-label="Home"
+            tabIndex={0}
+            end
+          >
+            <span role="img" aria-label="Home" style={{ marginRight: 8 }}>🏠</span>
+            Home
+          </NavLink>
+          <NavLink
+            to="/booking"
+            className="sidebar-nav-link"
+            aria-label="Booking"
+            tabIndex={0}
+          >
+            <span role="img" aria-label="Booking" style={{ marginRight: 8 }}>🎟️</span>
+            Booking
+          </NavLink>
+          <NavLink
+            to="/admin"
+            className="sidebar-nav-link"
+            aria-label="Admin Portal"
+            tabIndex={0}
+          >
+            <span role="img" aria-label="Admin" style={{ marginRight: 8 }}>🛠️</span>
+            Admin
+          </NavLink>
+        </nav>
+        <div className="sidebar-actions">
+          <Notifications />
+          <ChatSupport />
         </div>
+      </aside>
+      <main id="main-content" className="main-content" tabIndex={-1} role="main" aria-label="Content Main Area">
+        <Outlet />
       </main>
     </div>
   );
@@ -156,7 +157,6 @@ function App() {
         <Route index element={<Home />} />
         <Route path="booking" element={<Booking />} />
         <Route path="admin" element={<AdminPortal />} />
-        {/* Add more routes for other domains here as stubs */}
         <Route path="*" element={<div style={{ padding: 60, color: "red" }}>[404: Page Not Found]</div>} />
       </Route>
     </Routes>
