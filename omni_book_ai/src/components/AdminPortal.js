@@ -192,7 +192,7 @@ export default function AdminPortal() {
           marginLeft: "auto",
           marginRight: "auto"
         }}
-        aria-label="Booking form submissions history"
+        aria-label="Booking History"
       >
         <div style={{
           color: "var(--kavia-orange)",
@@ -210,8 +210,8 @@ export default function AdminPortal() {
             listStyle: "decimal",
             color: "var(--accent)"
           }}>
-            {[...bookings].reverse().map((b, idx) => (
-              <li key={b.id} style={{
+            {[...bookings].reverse().map((booking) => (
+              <li key={booking.id} style={{
                 marginBottom: 15,
                 background: "rgba(255,255,255,0.06)",
                 border: "1px solid var(--accent)",
@@ -221,23 +221,22 @@ export default function AdminPortal() {
                 fontSize: "1.03em"
               }}>
                 <div style={{ fontWeight: 600, marginBottom: 3, color: "var(--kavia-orange)", fontSize: "1.04em" }}>
-                  Purpose: <span style={{color:"var(--accent)"}}>{b.purpose}</span>
+                  Purpose: <span style={{color:"var(--accent)"}}>{booking.purpose}</span>
                   <span style={{
                     marginLeft: 16,
                     color: "var(--text-secondary)",
                     fontWeight: 400,
                     fontSize: "0.93em"
                   }}>
-                    {b.timestamp && (new Date(b.timestamp)).toLocaleString()}
+                    {booking.timestamp && (new Date(booking.timestamp)).toLocaleString()}
                   </span>
                 </div>
                 <div style={{marginTop:6}}>
-                  {Object.entries(b.data)
-                    .map(([k,v])=>(
-                      <div key={k} style={{padding: "1.5px 0"}}>
-                        <span style={{ color: "var(--accent)", fontWeight: 500 }}>{k}:</span>{" "}
-                        <span style={{ color: "var(--text-color)", fontWeight: 400 }}>{v+""}</span>
-                      </div>
+                  {Object.entries(booking.data).map(([field, value]) => (
+                    <div key={field} style={{padding: "1.5px 0"}}>
+                      <span style={{ color: "var(--accent)", fontWeight: 500 }}>{field}:</span>{" "}
+                      <span style={{ color: "var(--text-color)", fontWeight: 400 }}>{value+""}</span>
+                    </div>
                   ))}
                 </div>
               </li>
