@@ -285,3 +285,29 @@ input:focus:not(:focus-visible),
   padding: 12px 24px;
   font-size: 1.1rem;
 }
+
+/* Filter buttons group grid for home filters */
+.filter-btns-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+.filter-btn {
+  background: var(--secondary);
+  color: #fff;
+  font-weight: 500;
+  font-size: 1rem;
+  min-width: 108px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 2px 0;
+  justify-content: center;
+  padding: 10px 15px;
+  border-radius: 7px;
+}
+.filter-btn-icon {
+  font-size: 1.24rem;
+}

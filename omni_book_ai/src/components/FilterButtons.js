@@ -14,36 +14,19 @@ export default function FilterButtons() {
   ];
   return (
     <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        gap: 16,
-        flexWrap: "wrap",
-        marginBottom: 24
-      }}
+      className="filter-btns-group"
       role="group"
       aria-label="Main quick filter buttons"
     >
       {filters.map(btn => (
         <button
           key={btn.label}
-          className="btn"
-          style={{
-            background: "var(--secondary)",
-            color: "#fff",
-            fontWeight: 500,
-            fontSize: "1rem",
-            margin: "2px 0",
-            minWidth: 102,
-            display: "flex",
-            alignItems: "center",
-            gap: 7
-          }}
+          className="btn filter-btn"
           tabIndex={0}
           aria-label={`Filter: ${btn.label}`}
           type="button"
         >
-          <span aria-hidden="true" style={{ fontSize: "1.2rem" }}>
+          <span aria-hidden="true" className="filter-btn-icon">
             {btn.icon}
           </span>
           {btn.label}
