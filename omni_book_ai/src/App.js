@@ -12,7 +12,7 @@ import { NavLink, Routes, Route, Outlet } from 'react-router-dom';
 
 /**
  * PUBLIC_INTERFACE
- * Home page: Simple welcome message and navigation button to the Booking page.
+ * Home page: Only a welcome message and button to navigate to Booking page.
  */
 import { useNavigate } from 'react-router-dom'; // Import navigation hook
 
@@ -20,22 +20,23 @@ function Home() {
   const navigate = useNavigate();
   return (
     <div className="main-content-inner single-page" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '80vh' }}>
-      <div className="card-section" style={{ textAlign: 'center', maxWidth: 470, margin: '0 auto', padding: '40px 24px' }}>
-        <div className="subtitle" style={{ color: 'var(--kavia-orange)', fontWeight: 600, marginBottom: 8, fontSize: '1.14em' }}>
+      <div className="card-section" style={{ textAlign: 'center', maxWidth: 470, margin: '0 auto', padding: '46px 27px' }}>
+        <div className="subtitle" style={{ color: 'var(--kavia-orange)', fontWeight: 600, marginBottom: 8, fontSize: '1.15em' }}>
           Welcome to OmniBook AI
         </div>
-        <div className="title" style={{ marginBottom: 12 }}>Your Smart Booking Platform</div>
-        <div className="description" style={{ marginBottom: 32 }}>
-          Start your seamless booking journey across sports, movies, travel, and more. Click below to explore!
+        <div className="description" style={{ marginBottom: 36, fontWeight: 500 }}>
+          Start your seamless booking journey across sports, movies, travel, and more.
         </div>
-        <button className="btn btn-large"
+        <button
+          className="btn btn-large"
           style={{
             background: 'var(--kavia-orange)',
             color: 'var(--button-text-contrast)',
             fontWeight: 600,
             fontSize: '1.1rem',
-            minWidth: 140,
-            padding: '13px 32px'
+            minWidth: 160,
+            padding: '14px 38px',
+            marginTop: 4
           }}
           onClick={() => navigate('/booking')}
           aria-label="Go to booking page"
