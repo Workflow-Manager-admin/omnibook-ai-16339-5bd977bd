@@ -122,7 +122,7 @@ export default function AdminPortal() {
             <span style={{ marginRight: 13 }}>Admin Portal Dashboard</span>
           </span>
           {/* Navigation drop-down for Home or Booking */}
-          <div style={{ display: "flex", gap: 7 }}>
+          <nav style={{ display: "flex", gap: 7 }} aria-label="Back navigation from Admin Portal">
             <button
               type="button"
               onClick={() => navigate("/")}
@@ -130,23 +130,28 @@ export default function AdminPortal() {
               style={{
                 fontSize: "1em",
                 fontWeight: 700,
-                background: "var(--secondary)",
-                color: "#fff",
+                background: "var(--sidebar-bg)",
+                color: "var(--kavia-orange)",
                 border: "2px solid var(--accent)",
                 borderRadius: 8,
                 marginLeft: 0,
-                marginRight: 7,
-                padding: "8px 17px",
+                marginRight: 4,
+                padding: "8px 1.5em 8px 1em",
                 outline: "none",
-                transition: "background 0.18s",
                 boxShadow: "0 1px 5px 0 rgba(120,60,0,0.07)",
                 top: 0, right: 0,
+                display: "flex",
+                alignItems: "center",
+                gap: 6,
+                transition: "background 0.17s, color 0.15s"
               }}
               aria-label="Return to Home"
               tabIndex={0}
+              onKeyUp={e => { if (e.key === "Enter" || e.key === " ") navigate("/"); }}
+              autoFocus
             >
-              <span aria-hidden="true" style={{ marginRight: 7 }}>←</span>
-              Home
+              <span aria-hidden="true" style={{ marginRight: 7, fontSize: "1.25em" }}>🏠</span>
+              <span>Home</span>
             </button>
             <button
               type="button"
@@ -155,23 +160,28 @@ export default function AdminPortal() {
               style={{
                 fontSize: "1em",
                 fontWeight: 700,
-                background: "var(--secondary)",
-                color: "#fff",
+                background: "var(--sidebar-bg)",
+                color: "var(--accent)",
                 border: "2px solid var(--accent)",
                 borderRadius: 8,
-                padding: "8px 17px",
+                marginRight: 0,
+                padding: "8px 1.5em 8px 1em",
                 outline: "none",
-                transition: "background 0.18s",
                 boxShadow: "0 1px 5px 0 rgba(120,60,0,0.07)",
                 top: 0, right: 0,
+                display: "flex",
+                alignItems: "center",
+                gap: 6,
+                transition: "background 0.17s, color 0.15s"
               }}
               aria-label="Return to Booking"
               tabIndex={0}
+              onKeyUp={e => { if (e.key === "Enter" || e.key === " ") navigate("/booking"); }}
             >
-              <span aria-hidden="true" style={{ marginRight: 7 }}>←</span>
-              Booking
+              <span aria-hidden="true" style={{ marginRight: 7, fontSize: "1.25em" }}>🎟️</span>
+              <span>Booking</span>
             </button>
-          </div>
+          </nav>
         </h2>
         <div className="adminportal-vendor-switcher" role="tablist" aria-label="Switch Dashboard Vendor Type">
           {VENDORS.map((v) => (
