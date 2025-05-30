@@ -1,0 +1,202 @@
+.adminportal-root {
+  padding: 0 0 32px 0;
+  margin: 0 auto;
+  max-width: 1100px;
+  width: 100%;
+  min-height: 80vh;
+  box-sizing: border-box;
+}
+
+.adminportal-header {
+  margin-top: 0;
+  padding: 32px 0 18px 0;
+  text-align: left;
+  background: none;
+  z-index: 2;
+}
+.adminportal-header h2 {
+  margin: 0 0 14px 0;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--kavia-orange);
+  letter-spacing: -0.01em;
+  display: flex;
+  align-items: center;
+}
+.adminportal-icon {
+  font-size: 2.2rem;
+  margin-right: 11px;
+}
+.adminportal-vendor-switcher {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 17px;
+  margin-top: 11px;
+  margin-bottom: 4px;
+}
+.adminportal-vendor-btn {
+  background: none;
+  border: 1.5px solid var(--border-color);
+  color: var(--text-secondary);
+  font-size: 1.01rem;
+  padding: 9px 19px;
+  border-radius: 10px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.18s, color 0.16s, border 0.17s;
+  margin-bottom: 3px;
+}
+.adminportal-vendor-btn.vendor-active,
+.adminportal-vendor-btn:focus-visible {
+  background: var(--kavia-orange);
+  color: #fff;
+  font-weight: 700;
+  border: 2px solid var(--accent);
+  outline: 2px solid var(--accent);
+}
+.adminportal-analytics-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 33px 22px;
+  margin: 34px 0 0 0;
+  width: 100%;
+}
+
+.adminportal-stat-card {
+  background: rgba(255,255,255,0.035);
+  border: 2.4px solid var(--kavia-orange);
+  border-radius: 15px;
+  padding: 27px 22px 24px 22px;
+  min-width: 202px;
+  flex: 1 1 222px;
+  max-width: 260px;
+  box-shadow: 0 2px 14px 0 rgba(30,30,32,0.12);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-height: 126px;
+  position: relative;
+  margin-bottom: 7px;
+}
+
+.stat-card-label {
+  color: var(--accent);
+  font-size: 1.08rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.stat-card-icon {
+  font-size: 1.38em;
+}
+.stat-card-value {
+  font-size: 1.44em;
+  color: var(--kavia-orange);
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.stat-card-desc {
+  color: var(--text-secondary);
+  font-size: 0.96em;
+  margin-top: 0;
+  font-weight: 400;
+}
+
+.adminportal-charts-section {
+  margin-top: 38px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.dash-chart {
+  flex: 1 1 340px;
+  min-width: 220px;
+  max-width: 420px;
+  background: rgba(255,255,255,0.03);
+  border: 1.9px dashed var(--accent);
+  border-radius: 13px;
+  padding: 23px 17px 17px 17px;
+  box-shadow: 0 1px 13px 0 rgba(36,36,38,0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.dash-chart-title {
+  font-weight: 600;
+  font-size: 1.09em;
+  color: var(--accent);
+  margin-bottom: 13px;
+}
+.dash-chart-legend {
+  margin-top: 7px;
+  color: var(--text-secondary);
+  font-size: 0.97em;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.legend-dot {
+  width: 18px;
+  height: 8px;
+  border-radius: 8px;
+  display: inline-block;
+  margin-right: 7px;
+}
+
+.dash-heatmap-placeholder {
+  flex: 1 1 220px;
+  min-width: 160px;
+  max-width: 290px;
+  background: linear-gradient(117deg, rgba(255,136,0,0.11) 0%, rgba(255,255,255,0.009) 100%);
+  border: 2px solid var(--accent);
+  border-radius: 13px;
+  padding: 29px 17px 21px 17px;
+  box-shadow: 0 1px 13px 0 rgba(36,36,38,0.13);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.adminportal-footer {
+  text-align: right;
+  margin-top: 43px;
+  color: var(--text-secondary);
+  font-weight: 400;
+  font-size: 0.99em;
+  letter-spacing: 0.025em;
+  padding: 12px 4vw 0 0;
+}
+
+/* Responsive styles */
+@media (max-width: 900px) {
+  .adminportal-analytics-cards,
+  .adminportal-charts-section {
+    flex-direction: column;
+    gap: 18px 0;
+  }
+  .adminportal-stat-card,
+  .dash-chart,
+  .dash-heatmap-placeholder {
+    max-width: none;
+    width: 100%;
+    min-width: 0;
+  }
+}
+@media (max-width: 540px) {
+  .adminportal-root {
+    padding: 0 0 21px 0;
+  }
+  .adminportal-header {
+    padding: 20px 0 8px 0;
+  }
+  .adminportal-stat-card {
+    padding: 15px 7vw 13px 6vw;
+}
+  .dash-chart,
+  .dash-heatmap-placeholder {
+    padding: 13px 4vw;
+  }
+}

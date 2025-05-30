@@ -79,26 +79,7 @@ function Booking() {
   );
 }
 
-// PUBLIC_INTERFACE
-function AdminPortal() {
-  return (
-    <div className="main-content-inner single-page">
-      <div className="card-section">
-        <h2 style={{ marginBottom: 16 }}><span style={{ marginRight: 8 }}>🛠️</span>Admin Portal</h2>
-        <div style={{
-          margin: "16px 0",
-          background: "rgba(255,255,255,0.05)",
-          border: "1px dashed var(--kavia-orange)",
-          borderRadius: 10,
-          color: "var(--kavia-orange)",
-          padding: 30,
-        }}>
-          [Admin Portal Placeholder: Analytics / Ticket Management / Vendor Access]
-        </div>
-      </div>
-    </div>
-  );
-}
+import AdminPortal from './components/AdminPortal';
 
 function Layout() {
   return (
