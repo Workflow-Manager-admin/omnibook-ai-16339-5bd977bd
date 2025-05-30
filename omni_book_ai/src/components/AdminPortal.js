@@ -194,7 +194,13 @@ export default function AdminPortal() {
               }
               aria-selected={activeVendor === v.key}
               tabIndex={0}
+              aria-pressed={activeVendor === v.key}
               onClick={() => setActiveVendor(v.key)}
+              onKeyDown={e => {
+                if ((e.key === "Enter" || e.key === " ") && activeVendor !== v.key) {
+                  setActiveVendor(v.key);
+                }
+              }}
               style={{
                 background: activeVendor === v.key
                   ? "var(--kavia-orange)"
@@ -205,12 +211,53 @@ export default function AdminPortal() {
                   : "1.5px solid var(--border-color)",
                 outline: activeVendor === v.key ? "2px solid var(--accent)" : undefined,
                 fontWeight: activeVendor === v.key ? 700 : 500,
+                boxShadow: activeVendor === v.key ? "0 0 0 2px var(--accent)" : undefined,
+                cursor: activeVendor === v.key ? "default" : "pointer",
+                position: "relative"
               }}
+              aria-label={
+                activeVendor === v.key
+                  ? `${v.label} (selected)`
+                  : `Switch to ${v.label} analytics`
+              }
             >
               <span aria-hidden="true" style={{ fontSize: "1.28em", marginRight: 7 }}>{v.icon}</span>
               {v.label}
+              {activeVendor === v.key && (
+                <span
+                  aria-hidden="true"
+                  style={{
+                    position: "absolute",
+                    right: 10,
+                    top: 8,
+                    fontWeight: 700,
+                    background: "var(--accent)",
+                    color: "#fff",
+                    borderRadius: "3px",
+                    padding: "1px 7px",
+                    fontSize: "0.95em",
+                    marginLeft: 6,
+                  }}
+                >✓</span>
+              )}
             </button>
           ))}
+          <div style={{
+            width: "100%",
+            marginTop: 6,
+            marginBottom: 2,
+            color: "var(--kavia-orange)",
+            minHeight: 23,
+            fontWeight: 500,
+            fontSize: "1.04em",
+            letterSpacing: "0.01em"
+          }} aria-live="polite">
+            Currently viewing dashboard for: <span style={{
+              color: "var(--accent)",
+              fontWeight: 700,
+              marginLeft: 2
+            }}>{VENDORS.find(v => v.key === activeVendor)?.label}</span>
+          </div>
         </div>
       </header>
       <section className="adminportal-analytics-cards">
