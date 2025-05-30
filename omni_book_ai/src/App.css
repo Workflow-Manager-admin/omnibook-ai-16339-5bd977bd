@@ -321,6 +321,19 @@ input:focus-visible,
   box-shadow: 0 0 0 2px var(--accent);
 }
 
+/* Visually hidden utility (for ARIA labels, section titles, etc.) */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  border: 0 !important;
+  white-space: nowrap !important;
+}
+
 a:focus:not(:focus-visible),
 button:focus:not(:focus-visible),
 input:focus:not(:focus-visible),
