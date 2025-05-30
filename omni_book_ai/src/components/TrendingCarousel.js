@@ -4,7 +4,10 @@ import React from "react";
 export default function TrendingCarousel() {
   /** Placeholder component for trending events carousel. */
   return (
-    <div
+    <section
+      role="region"
+      aria-label="Trending Now"
+      tabIndex={0}
       style={{
         background: "rgba(255,255,255,0.03)",
         border: "1px solid var(--border-color)",
@@ -17,6 +20,6 @@ export default function TrendingCarousel() {
       }}
     >
       [Trending Events Carousel Placeholder]
-    </div>
+    </section>
   );
 }
