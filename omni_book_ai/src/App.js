@@ -1,21 +1,13 @@
 import React from 'react';
 import './App.css';
-import UniversalSearch from './components/UniversalSearch';
-import TrendingCarousel from './components/TrendingCarousel';
-import RecommendationsCarousel from './components/RecommendationsCarousel';
-import FilterButtons from './components/FilterButtons';
+import { useNavigate, NavLink, Routes, Route, Outlet } from 'react-router-dom';
 import BookingFlow from './components/BookingFlow';
 import SeatMapAR from './components/SeatMapAR';
 import Notifications from './components/Notifications';
 import ChatSupport from './components/ChatSupport';
-import { NavLink, Routes, Route, Outlet } from 'react-router-dom';
 
-/**
- * PUBLIC_INTERFACE
- * Home page: Only a welcome message and button to navigate to Booking page.
- */
-import { useNavigate } from 'react-router-dom'; // Import navigation hook
-
+// PUBLIC_INTERFACE
+// Minimal Home: shows only welcome message and "Go to Booking" button
 function Home() {
   const navigate = useNavigate();
   return (
