@@ -5,6 +5,7 @@ import BookingFlow from './components/BookingFlow';
 import SeatMapAR from './components/SeatMapAR';
 import Notifications from './components/Notifications';
 import ChatSupport from './components/ChatSupport';
+import UniversalSearch from './components/UniversalSearch';
 
  // PUBLIC_INTERFACE
  // Home page: Only show welcome message & router button to Booking
