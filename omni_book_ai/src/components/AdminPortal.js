@@ -62,6 +62,11 @@ function SimpleMiniBar({ values = [], color = "#FF6600" }) {
   );
 }
 
+/** 
+ * PUBLIC_INTERFACE
+ * AdminPortal is always accessible: route: "/admin". 
+ * Includes clear navigation to return to Home and Booking.
+ */
 export default function AdminPortal() {
   /**
    * AdminPortal: Multi-domain vendor dashboard for analytics/management.
