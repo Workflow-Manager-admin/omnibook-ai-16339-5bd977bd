@@ -88,6 +88,7 @@ function Layout() {
         Skip to main content
       </a>
       {/* Sidebar Navigation */}
+      {/* Sidebar always includes Admin Portal for all contexts */}
       <aside className="sidebar" role="navigation" aria-label="Main sidebar navigation">
         <div className="sidebar-header">
           <NavLink
@@ -104,6 +105,7 @@ function Layout() {
           </div>
         </div>
         <nav className="sidebar-nav" aria-label="Main sections">
+          {/* Permanent navigation: Home, Booking, Admin Portal (always visible, even in admin mode) */}
           <NavLink
             to="/"
             className="sidebar-nav-link"
