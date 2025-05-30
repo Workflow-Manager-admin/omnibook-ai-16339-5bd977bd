@@ -40,12 +40,23 @@ export default function BookingFlow() {
     }));
   };
 
+  // Booking form submit handler (shared for all forms)
+  function handleSubmit(e) {
+    e.preventDefault();
+    if (!currentPurpose || !formState) return;
+    submitBooking(currentPurpose, formState);
+    setSubmissionSuccess(true);
+    setFormState({});
+    setTimeout(() => setSubmissionSuccess(false), 2600);
+  }
+
   // Render the booking form for the selected purpose
   function renderBookingForm() {
+    // All forms: add onSubmit={handleSubmit}
     switch (currentPurpose) {
       case "sports":
         return (
-          <form className="bookingflow-form" autoComplete="off" aria-label="Book Sports Event Tickets">
+          <form className="bookingflow-form" autoComplete="off" aria-label="Book Sports Event Tickets" onSubmit={handleSubmit}>
             <FormHeading icon="🏟️">Book Sports Event Tickets</FormHeading>
             <Field label="Sport Type">
               <select
@@ -108,7 +119,7 @@ export default function BookingFlow() {
         );
       case "movies":
         return (
-          <form className="bookingflow-form" autoComplete="off" aria-label="Book Movies & Shows">
+          <form className="bookingflow-form" autoComplete="off" aria-label="Book Movies & Shows" onSubmit={handleSubmit}>
             <FormHeading icon="🎬">Book Movies & Shows</FormHeading>
             <Field label="Movie/Show Title">
               <input
@@ -177,7 +188,7 @@ export default function BookingFlow() {
         );
       case "travel":
         return (
-          <form className="bookingflow-form" autoComplete="off" aria-label="Book Travel Ticket">
+          <form className="bookingflow-form" autoComplete="off" aria-label="Book Travel Ticket" onSubmit={handleSubmit}>
             <FormHeading icon="✈️">Book Travel Ticket</FormHeading>
             <Field label="Travel Mode">
               <select
@@ -250,7 +261,7 @@ export default function BookingFlow() {
         );
       case "venues":
         return (
-          <form className="bookingflow-form" autoComplete="off" aria-label="Book Event Venue">
+          <form className="bookingflow-form" autoComplete="off" aria-label="Book Event Venue" onSubmit={handleSubmit}>
             <FormHeading icon="🏨">Book Event Venue</FormHeading>
             <Field label="Venue Name">
               <input
@@ -308,7 +319,7 @@ export default function BookingFlow() {
         );
       case "resorts":
         return (
-          <form className="bookingflow-form" autoComplete="off" aria-label="Book a Resort">
+          <form className="bookingflow-form" autoComplete="off" aria-label="Book a Resort" onSubmit={handleSubmit}>
             <FormHeading icon="🌴">Book a Resort</FormHeading>
             <Field label="Resort Name">
               <input
@@ -377,7 +388,7 @@ export default function BookingFlow() {
         );
       case "local":
         return (
-          <form className="bookingflow-form" autoComplete="off" aria-label="Book Local Event">
+          <form className="bookingflow-form" autoComplete="off" aria-label="Book Local Event" onSubmit={handleSubmit}>
             <FormHeading icon="📣">Book Local Event</FormHeading>
             <Field label="Event Name">
               <input
@@ -421,7 +432,7 @@ export default function BookingFlow() {
         );
       case "concerts":
         return (
-          <form className="bookingflow-form" autoComplete="off" aria-label="Book Concert Ticket">
+          <form className="bookingflow-form" autoComplete="off" aria-label="Book Concert Ticket" onSubmit={handleSubmit}>
             <FormHeading icon="🎶">Book Concert Ticket</FormHeading>
             <Field label="Concert Name">
               <input
@@ -501,19 +512,39 @@ export default function BookingFlow() {
     );
   }
 
-  // Styled "Book Now" demo button
+  // Styled "Book Now" submit button and success feedback
   function SubmitButton() {
     return (
-      <button
-        type="submit"
-        className="bookingflow-btn"
-        tabIndex={0}
-        disabled
-        aria-disabled="true"
-        title="Demo mode: no actual booking"
-      >
-        Book Now
-      </button>
+      <>
+        <button
+          type="submit"
+          className="bookingflow-btn"
+          tabIndex={0}
+          aria-disabled="false"
+          title="Submit booking"
+          style={{
+            cursor: "pointer",
+            opacity: 1,
+            background: "var(--kavia-orange)",
+            color: "#fff"
+          }}
+        >
+          Book Now
+        </button>
+        {submissionSuccess && (
+          <div
+            aria-live="polite"
+            style={{
+              marginTop: 8,
+              color: "var(--accent)",
+              fontWeight: 600,
+              fontSize: "1.06em"
+            }}
+          >
+            Booking submitted!
+          </div>
+        )}
+      </>
     );
   }
 
