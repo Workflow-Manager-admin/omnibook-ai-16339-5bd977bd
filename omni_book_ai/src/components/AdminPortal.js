@@ -118,32 +118,57 @@ export default function AdminPortal() {
             <span className="adminportal-icon">🛠️</span>
             <span style={{ marginRight: 13 }}>Admin Portal Dashboard</span>
           </span>
-          <button
-            type="button"
-            onClick={() => navigate("/booking")}
-            className="btn"
-            style={{
-              fontSize: "1em",
-              fontWeight: 700,
-              background: "var(--secondary)",
-              color: "#fff",
-              border: "2px solid var(--accent)",
-              borderRadius: 8,
-              marginLeft: 18,
-              padding: "8px 20px",
-              outline: "none",
-              transition: "background 0.18s",
-              boxShadow: "0 1px 5px 0 rgba(120,60,0,0.07)",
-              position: "relative",
-              top: 0,
-              right: 0,
-            }}
-            aria-label="Return to Booking"
-            tabIndex={0}
-          >
-            <span aria-hidden="true" style={{ marginRight: 7 }}>←</span>
-            Back to Booking
-          </button>
+          {/* Navigation drop-down for Home or Booking */}
+          <div style={{ display: "flex", gap: 7 }}>
+            <button
+              type="button"
+              onClick={() => navigate("/")}
+              className="btn"
+              style={{
+                fontSize: "1em",
+                fontWeight: 700,
+                background: "var(--secondary)",
+                color: "#fff",
+                border: "2px solid var(--accent)",
+                borderRadius: 8,
+                marginLeft: 0,
+                marginRight: 7,
+                padding: "8px 17px",
+                outline: "none",
+                transition: "background 0.18s",
+                boxShadow: "0 1px 5px 0 rgba(120,60,0,0.07)",
+                top: 0, right: 0,
+              }}
+              aria-label="Return to Home"
+              tabIndex={0}
+            >
+              <span aria-hidden="true" style={{ marginRight: 7 }}>←</span>
+              Home
+            </button>
+            <button
+              type="button"
+              onClick={() => navigate("/booking")}
+              className="btn"
+              style={{
+                fontSize: "1em",
+                fontWeight: 700,
+                background: "var(--secondary)",
+                color: "#fff",
+                border: "2px solid var(--accent)",
+                borderRadius: 8,
+                padding: "8px 17px",
+                outline: "none",
+                transition: "background 0.18s",
+                boxShadow: "0 1px 5px 0 rgba(120,60,0,0.07)",
+                top: 0, right: 0,
+              }}
+              aria-label="Return to Booking"
+              tabIndex={0}
+            >
+              <span aria-hidden="true" style={{ marginRight: 7 }}>←</span>
+              Booking
+            </button>
+          </div>
         </h2>
         <div className="adminportal-vendor-switcher" role="tablist" aria-label="Switch Dashboard Vendor Type">
           {VENDORS.map((v) => (
