@@ -1,23 +1,24 @@
 import React, { useState } from "react";
+import "./BookingFlow.css";
 
-// Booking purposes
+// Booking purposes with simple icons
 const PURPOSES = [
-  { value: "sports", label: "Sports Events" },
-  { value: "movies", label: "Movies & Shows" },
-  { value: "travel", label: "Travel (Bus, Train, Flights)" },
-  { value: "venues", label: "Event Venues" },
-  { value: "resorts", label: "Resorts" },
-  { value: "local", label: "Local Events" },
-  { value: "concerts", label: "Concerts" }
+  { value: "sports", label: "Sports Events", icon: "🏟️" },
+  { value: "movies", label: "Movies & Shows", icon: "🎬" },
+  { value: "travel", label: "Travel (Bus, Train, Flights)", icon: "✈️" },
+  { value: "venues", label: "Event Venues", icon: "🏨" },
+  { value: "resorts", label: "Resorts", icon: "🌴" },
+  { value: "local", label: "Local Events", icon: "📣" },
+  { value: "concerts", label: "Concerts", icon: "🎶" }
 ];
 
 // PUBLIC_INTERFACE
 export default function BookingFlow() {
   /**
-   * BookingFlow: Minimal, dynamic booking by purpose.
-   * - Dropdown for booking purpose
-   * - Shows only the relevant form for selected purpose
-   * - All stepper, AR seat map, and booking stages removed for simplicity
+   * BookingFlow: Visually enhanced dynamic booking forms.
+   * - Clean, flex-driven layout, mobile-friendly first
+   * - Distinct section headings and subtle icons
+   * - Accessible label+input design, clear button and focus states
    */
   const [currentPurpose, setCurrentPurpose] = useState(""); // blank until chosen
   const [formState, setFormState] = useState({});
@@ -41,14 +42,17 @@ export default function BookingFlow() {
     switch (currentPurpose) {
       case "sports":
         return (
-          <form style={bookingFormStyle}>
-            <FormHeading>Book Sports Event Tickets</FormHeading>
+          <form className="bookingflow-form" autoComplete="off" aria-label="Book Sports Event Tickets">
+            <FormHeading icon="🏟️">Book Sports Event Tickets</FormHeading>
             <Field label="Sport Type">
               <select
                 name="sportType"
+                className="bookingflow-select"
                 value={formState.sportType || ""}
                 onChange={handleInputChange}
                 required
+                tabIndex={0}
+                aria-label="Choose sport type"
               >
                 <option value="">Select</option>
                 <option>Football</option>
@@ -63,28 +67,37 @@ export default function BookingFlow() {
                 type="text"
                 name="eventName"
                 placeholder="e.g. IPL: MI vs CSK"
+                className="bookingflow-input"
                 value={formState.eventName || ""}
                 onChange={handleInputChange}
                 required
+                tabIndex={0}
+                aria-label="Event name"
               />
             </Field>
             <Field label="City">
               <input
                 type="text"
                 name="city"
+                className="bookingflow-input"
                 value={formState.city || ""}
                 placeholder="e.g. Mumbai"
                 onChange={handleInputChange}
                 required
+                tabIndex={0}
+                aria-label="City"
               />
             </Field>
             <Field label="Preferred Date">
               <input
                 type="date"
                 name="date"
+                className="bookingflow-input"
                 value={formState.date || ""}
                 onChange={handleInputChange}
                 required
+                tabIndex={0}
+                aria-label="Preferred date"
               />
             </Field>
             <SubmitButton />
@@ -92,16 +105,19 @@ export default function BookingFlow() {
         );
       case "movies":
         return (
-          <form style={bookingFormStyle}>
-            <FormHeading>Book Movies & Shows</FormHeading>
+          <form className="bookingflow-form" autoComplete="off" aria-label="Book Movies & Shows">
+            <FormHeading icon="🎬">Book Movies & Shows</FormHeading>
             <Field label="Movie/Show Title">
               <input
                 type="text"
                 name="title"
                 placeholder="e.g. Oppenheimer"
+                className="bookingflow-input"
                 value={formState.title || ""}
                 onChange={handleInputChange}
                 required
+                tabIndex={0}
+                aria-label="Movie or show title"
               />
             </Field>
             <Field label="Cinema/Theatre">
@@ -109,9 +125,141 @@ export default function BookingFlow() {
                 type="text"
                 name="cinema"
                 placeholder="e.g. PVR Icon"
+                className="bookingflow-input"
                 value={formState.cinema || ""}
                 onChange={handleInputChange}
                 required
+                tabIndex={0}
+                aria-label="Cinema or theatre"
+              />
+            </Field>
+            <Field label="City">
+              <input
+                type="text"
+                name="city"
+                className="bookingflow-input"
+                value={formState.city || ""}
+                onChange={handleInputChange}
+                required
+                tabIndex={0}
+                aria-label="City"
+              />
+            </Field>
+            <Field label="Date">
+              <input
+                type="date"
+                name="date"
+                className="bookingflow-input"
+                value={formState.date || ""}
+                onChange={handleInputChange}
+                required
+                tabIndex={0}
+                aria-label="Date"
+              />
+            </Field>
+            <Field label="Show Time">
+              <input
+                type="time"
+                name="showtime"
+                className="bookingflow-input"
+                value={formState.showtime || ""}
+                onChange={handleInputChange}
+                required
+                tabIndex={0}
+                aria-label="Show time"
+              />
+            </Field>
+            <SubmitButton />
+          </form>
+        );
+      case "travel":
+        return (
+          <form className="bookingflow-form" autoComplete="off" aria-label="Book Travel Ticket">
+            <FormHeading icon="✈️">Book Travel Ticket</FormHeading>
+            <Field label="Travel Mode">
+              <select
+                name="mode"
+                value={formState.mode || ""}
+                onChange={handleInputChange}
+                required
+                className="bookingflow-select"
+                tabIndex={0}
+                aria-label="Travel mode"
+              >
+                <option value="">Select</option>
+                <option>Bus</option>
+                <option>Train</option>
+                <option>Flight</option>
+              </select>
+            </Field>
+            <Field label="From">
+              <input
+                type="text"
+                name="from"
+                value={formState.from || ""}
+                placeholder="Source City"
+                className="bookingflow-input"
+                onChange={handleInputChange}
+                required
+                tabIndex={0}
+                aria-label="From city"
+              />
+            </Field>
+            <Field label="To">
+              <input
+                type="text"
+                name="to"
+                value={formState.to || ""}
+                placeholder="Destination City"
+                className="bookingflow-input"
+                onChange={handleInputChange}
+                required
+                tabIndex={0}
+                aria-label="To city"
+              />
+            </Field>
+            <Field label="Date of Journey">
+              <input
+                type="date"
+                name="date"
+                value={formState.date || ""}
+                className="bookingflow-input"
+                onChange={handleInputChange}
+                required
+                tabIndex={0}
+                aria-label="Date of journey"
+              />
+            </Field>
+            <Field label="Preferred Time">
+              <input
+                type="time"
+                name="time"
+                value={formState.time || ""}
+                className="bookingflow-input"
+                onChange={handleInputChange}
+                required
+                tabIndex={0}
+                aria-label="Preferred time"
+              />
+            </Field>
+            <SubmitButton />
+          </form>
+        );
+      case "venues":
+        return (
+          <form className="bookingflow-form" autoComplete="off" aria-label="Book Event Venue">
+            <FormHeading icon="🏨">Book Event Venue</FormHeading>
+            <Field label="Venue Name">
+              <input
+                type="text"
+                name="venue"
+                value={formState.venue || ""}
+                onChange={handleInputChange}
+                placeholder="e.g. ICC Convention Centre"
+                className="bookingflow-input"
+                required
+                tabIndex={0}
+                aria-label="Venue name"
               />
             </Field>
             <Field label="City">
@@ -120,7 +268,181 @@ export default function BookingFlow() {
                 name="city"
                 value={formState.city || ""}
                 onChange={handleInputChange}
+                className="bookingflow-input"
                 required
+                tabIndex={0}
+                aria-label="City"
+              />
+            </Field>
+            <Field label="Date for Event">
+              <input
+                type="date"
+                name="date"
+                value={formState.date || ""}
+                onChange={handleInputChange}
+                className="bookingflow-input"
+                required
+                tabIndex={0}
+                aria-label="Date for event"
+              />
+            </Field>
+            <Field label="No. of Guests">
+              <input
+                type="number"
+                name="guests"
+                value={formState.guests || ""}
+                onChange={handleInputChange}
+                min={1}
+                placeholder="e.g. 100"
+                className="bookingflow-input"
+                required
+                tabIndex={0}
+                aria-label="Number of guests"
+              />
+            </Field>
+            <SubmitButton />
+          </form>
+        );
+      case "resorts":
+        return (
+          <form className="bookingflow-form" autoComplete="off" aria-label="Book a Resort">
+            <FormHeading icon="🌴">Book a Resort</FormHeading>
+            <Field label="Resort Name">
+              <input
+                type="text"
+                name="resort"
+                value={formState.resort || ""}
+                onChange={handleInputChange}
+                placeholder="e.g. Palm Beach Resort"
+                className="bookingflow-input"
+                required
+                tabIndex={0}
+                aria-label="Resort name"
+              />
+            </Field>
+            <Field label="City / Location">
+              <input
+                type="text"
+                name="city"
+                value={formState.city || ""}
+                onChange={handleInputChange}
+                className="bookingflow-input"
+                required
+                tabIndex={0}
+                aria-label="City or location"
+              />
+            </Field>
+            <Field label="Check-In Date">
+              <input
+                type="date"
+                name="checkin"
+                value={formState.checkin || ""}
+                onChange={handleInputChange}
+                className="bookingflow-input"
+                required
+                tabIndex={0}
+                aria-label="Check-In date"
+              />
+            </Field>
+            <Field label="Check-Out Date">
+              <input
+                type="date"
+                name="checkout"
+                value={formState.checkout || ""}
+                onChange={handleInputChange}
+                className="bookingflow-input"
+                required
+                tabIndex={0}
+                aria-label="Check-Out date"
+              />
+            </Field>
+            <Field label="No. of Rooms">
+              <input
+                type="number"
+                name="rooms"
+                min={1}
+                value={formState.rooms || ""}
+                onChange={handleInputChange}
+                className="bookingflow-input"
+                required
+                tabIndex={0}
+                aria-label="Number of rooms"
+              />
+            </Field>
+            <SubmitButton />
+          </form>
+        );
+      case "local":
+        return (
+          <form className="bookingflow-form" autoComplete="off" aria-label="Book Local Event">
+            <FormHeading icon="📣">Book Local Event</FormHeading>
+            <Field label="Event Name">
+              <input
+                type="text"
+                name="event"
+                value={formState.event || ""}
+                onChange={handleInputChange}
+                placeholder="e.g. Food Festival"
+                className="bookingflow-input"
+                required
+                tabIndex={0}
+                aria-label="Event name"
+              />
+            </Field>
+            <Field label="City">
+              <input
+                type="text"
+                name="city"
+                value={formState.city || ""}
+                onChange={handleInputChange}
+                className="bookingflow-input"
+                required
+                tabIndex={0}
+                aria-label="City"
+              />
+            </Field>
+            <Field label="Event Date">
+              <input
+                type="date"
+                name="date"
+                value={formState.date || ""}
+                onChange={handleInputChange}
+                className="bookingflow-input"
+                required
+                tabIndex={0}
+                aria-label="Event date"
+              />
+            </Field>
+            <SubmitButton />
+          </form>
+        );
+      case "concerts":
+        return (
+          <form className="bookingflow-form" autoComplete="off" aria-label="Book Concert Ticket">
+            <FormHeading icon="🎶">Book Concert Ticket</FormHeading>
+            <Field label="Concert Name">
+              <input
+                type="text"
+                name="concert"
+                value={formState.concert || ""}
+                onChange={handleInputChange}
+                placeholder="e.g. Taylor Swift Eras Tour"
+                className="bookingflow-input"
+                required
+                tabIndex={0}
+                aria-label="Concert name"
+              />
+            </Field>
+            <Field label="City">
+              <input
+                type="text"
+                name="city"
+                value={formState.city || ""}
+                onChange={handleInputChange}
+                className="bookingflow-input"
+                required
+                tabIndex={0}
+                aria-label="City"
               />
             </Field>
             <Field label="Date">
@@ -129,133 +451,24 @@ export default function BookingFlow() {
                 name="date"
                 value={formState.date || ""}
                 onChange={handleInputChange}
+                className="bookingflow-input"
                 required
+                tabIndex={0}
+                aria-label="Date"
               />
-            </Field>
-            <Field label="Show Time">
-              <input
-                type="time"
-                name="showtime"
-                value={formState.showtime || ""}
-                onChange={handleInputChange}
-                required
-              />
-            </Field>
-            <SubmitButton />
-          </form>
-        );
-      case "travel":
-        return (
-          <form style={bookingFormStyle}>
-            <FormHeading>Book Travel Ticket</FormHeading>
-            <Field label="Travel Mode">
-              <select name="mode" value={formState.mode || ""} onChange={handleInputChange} required>
-                <option value="">Select</option>
-                <option>Bus</option>
-                <option>Train</option>
-                <option>Flight</option>
-              </select>
-            </Field>
-            <Field label="From">
-              <input type="text" name="from" value={formState.from || ""} placeholder="Source City"
-                onChange={handleInputChange} required />
-            </Field>
-            <Field label="To">
-              <input type="text" name="to" value={formState.to || ""} placeholder="Destination City"
-                onChange={handleInputChange} required />
-            </Field>
-            <Field label="Date of Journey">
-              <input type="date" name="date" value={formState.date || ""} onChange={handleInputChange} required />
-            </Field>
-            <Field label="Preferred Time">
-              <input type="time" name="time" value={formState.time || ""} onChange={handleInputChange} required />
-            </Field>
-            <SubmitButton />
-          </form>
-        );
-      case "venues":
-        return (
-          <form style={bookingFormStyle}>
-            <FormHeading>Book Event Venue</FormHeading>
-            <Field label="Venue Name">
-              <input type="text" name="venue" value={formState.venue || ""} onChange={handleInputChange}
-                placeholder="e.g. ICC Convention Centre" required />
-            </Field>
-            <Field label="City">
-              <input type="text" name="city" value={formState.city || ""} onChange={handleInputChange}
-                required />
-            </Field>
-            <Field label="Date for Event">
-              <input type="date" name="date" value={formState.date || ""} onChange={handleInputChange} required />
-            </Field>
-            <Field label="No. of Guests">
-              <input type="number" name="guests" value={formState.guests || ""} onChange={handleInputChange}
-                min={1} placeholder="e.g. 100" required />
-            </Field>
-            <SubmitButton />
-          </form>
-        );
-      case "resorts":
-        return (
-          <form style={bookingFormStyle}>
-            <FormHeading>Book a Resort</FormHeading>
-            <Field label="Resort Name">
-              <input type="text" name="resort" value={formState.resort || ""} onChange={handleInputChange}
-                placeholder="e.g. Palm Beach Resort" required />
-            </Field>
-            <Field label="City / Location">
-              <input type="text" name="city" value={formState.city || ""} onChange={handleInputChange}
-                required />
-            </Field>
-            <Field label="Check-In Date">
-              <input type="date" name="checkin" value={formState.checkin || ""} onChange={handleInputChange} required />
-            </Field>
-            <Field label="Check-Out Date">
-              <input type="date" name="checkout" value={formState.checkout || ""} onChange={handleInputChange} required />
-            </Field>
-            <Field label="No. of Rooms">
-              <input type="number" name="rooms" min={1} value={formState.rooms || ""} onChange={handleInputChange}
-                required />
-            </Field>
-            <SubmitButton />
-          </form>
-        );
-      case "local":
-        return (
-          <form style={bookingFormStyle}>
-            <FormHeading>Book Local Event</FormHeading>
-            <Field label="Event Name">
-              <input type="text" name="event" value={formState.event || ""} onChange={handleInputChange}
-                placeholder="e.g. Food Festival" required />
-            </Field>
-            <Field label="City">
-              <input type="text" name="city" value={formState.city || ""} onChange={handleInputChange}
-                required />
-            </Field>
-            <Field label="Event Date">
-              <input type="date" name="date" value={formState.date || ""} onChange={handleInputChange} required />
-            </Field>
-            <SubmitButton />
-          </form>
-        );
-      case "concerts":
-        return (
-          <form style={bookingFormStyle}>
-            <FormHeading>Book Concert Ticket</FormHeading>
-            <Field label="Concert Name">
-              <input type="text" name="concert" value={formState.concert || ""} onChange={handleInputChange}
-                placeholder="e.g. Taylor Swift Eras Tour" required />
-            </Field>
-            <Field label="City">
-              <input type="text" name="city" value={formState.city || ""} onChange={handleInputChange}
-                required />
-            </Field>
-            <Field label="Date">
-              <input type="date" name="date" value={formState.date || ""} onChange={handleInputChange} required />
             </Field>
             <Field label="Number of Tickets">
-              <input type="number" name="tickets" value={formState.tickets || ""} min={1}
-                onChange={handleInputChange} required />
+              <input
+                type="number"
+                name="tickets"
+                value={formState.tickets || ""}
+                min={1}
+                onChange={handleInputChange}
+                className="bookingflow-input"
+                required
+                tabIndex={0}
+                aria-label="Number of tickets"
+              />
             </Field>
             <SubmitButton />
           </form>
@@ -265,48 +478,32 @@ export default function BookingFlow() {
     }
   }
 
-  function FormHeading({ children }) {
+  // Heading with optional icon
+  function FormHeading({ children, icon }) {
     return (
-      <div style={{
-        fontWeight: 700,
-        fontSize: "1.11rem",
-        color: "var(--secondary)",
-        marginBottom: 14
-      }}>{children}</div>
+      <div className="bookingflow-heading">
+        {icon && <span className="icon">{icon}</span>}
+        <span>{children}</span>
+      </div>
     );
   }
 
+  // Accessible Field wrapper
   function Field({ label, children }) {
     return (
-      <label style={{
-        display: "flex",
-        flexDirection: "column",
-        gap: 4,
-        color: "var(--text-color)",
-        marginBottom: 14,
-        fontSize: "1em"
-      }}>
-        <span style={{ color: "var(--text-secondary)", fontWeight: 500, marginBottom: 2 }}>{label}</span>
+      <div className="bookingflow-field">
+        <span>{label}</span>
         {children}
-      </label>
+      </div>
     );
   }
 
+  // Styled "Book Now" demo button
   function SubmitButton() {
     return (
       <button
         type="submit"
-        className="btn"
-        style={{
-          background: "var(--kavia-orange)",
-          color: "var(--button-text-contrast)",
-          border: "none",
-          fontWeight: 600,
-          borderRadius: 5,
-          padding: "11px 28px",
-          marginTop: 17,
-          fontSize: "1.08em"
-        }}
+        className="bookingflow-btn"
         tabIndex={0}
         disabled
         aria-disabled="true"
@@ -317,101 +514,35 @@ export default function BookingFlow() {
     );
   }
 
+  // Main UI layout
   return (
-    <div
-      style={{
-        background: "rgba(255,255,255,0.03)",
-        border: "1px dashed var(--accent)",
-        borderRadius: 10,
-        color: "var(--accent)",
-        padding: "15px 0 16px 0",
-        minHeight: 64,
-        textAlign: "left",
-        display: "flex",
-        flexDirection: "column",
-        gap: "1.1rem"
-      }}
-    >
-      {/* Dropdown for booking purpose */}
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "flex-start",
-          gap: 8,
-          margin: "0 0 10px 0"
-        }}
-      >
-        <label
-          htmlFor="purpose"
-          style={{
-            fontWeight: 600,
-            fontSize: "1.09em",
-            color: "var(--accent)",
-            display: "block",
-            marginBottom: 3
-          }}
-        >
+    <div className="bookingflow-root" style={{ position: "relative" }}>
+      {/* Booking purpose (with additional icon) */}
+      <section className="bookingflow-purpose-section" aria-label="Booking Purpose">
+        <label htmlFor="purpose" className="bookingflow-label">
+          <span className="bookingflow-sr-only">Select booking domain</span>
           Booking Purpose
         </label>
         <select
           id="purpose"
+          className="bookingflow-select"
           aria-label="Choose booking purpose"
           value={currentPurpose}
           required
           onChange={handlePurposeChange}
-          style={{
-            fontSize: "1.07em",
-            padding: "10px 14px",
-            borderRadius: 6,
-            border: "1.5px solid var(--border-color)",
-            background: "var(--primary)",
-            color: "var(--text-color)",
-            outline: currentPurpose ? "2px solid var(--accent)" : undefined,
-            fontWeight: 500,
-            minWidth: 180,
-            maxWidth: 340,
-            marginTop: 3,
-            marginBottom: 0,
-          }}
         >
           <option value="">-- Select Purpose --</option>
           {PURPOSES.map((opt) => (
             <option key={opt.value} value={opt.value}>
-              {opt.label}
+              {opt.icon + " "} {opt.label}
             </option>
           ))}
         </select>
-      </div>
-
-      {/* Show relevant booking form. Only display once a purpose is selected */}
-      {currentPurpose && (
-        <div
-          style={{
-            margin: "10px 0 0 0",
-            background: "rgba(255,255,255,0.01)",
-            border: "1.5px solid var(--border-color)",
-            borderRadius: 9,
-            padding: "22px 15px 12px 12px",
-            boxShadow: "0 2px 10px 0 rgba(36,36,38,0.08)"
-          }}
-        >
-          {renderBookingForm()}
-        </div>
-      )}
+      </section>
+      {/* Render the relevant form for selected purpose */}
+      {currentPurpose ? (
+        <div className="bookingflow-form-card" aria-live="polite">{renderBookingForm()}</div>
+      ) : null}
     </div>
   );
 }
-
-// Helper: booking form card style
-const bookingFormStyle = {
-  display: "flex",
-  flexDirection: "column",
-  gap: "7px",
-  color: "var(--text-color)",
-  background: "none",
-  border: "none",
-  margin: 0,
-  padding: 0,
-  fontSize: "1em"
-};
