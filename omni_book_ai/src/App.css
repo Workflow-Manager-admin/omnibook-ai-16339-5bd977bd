@@ -151,18 +151,38 @@ input:focus:not(:focus-visible),
 
 .btn {
   background-color: var(--kavia-orange);
-  color: white;
+  color: var(--button-text-contrast);
   border: none;
   border-radius: 4px;
   padding: 10px 20px;
   font-size: 1rem;
   font-weight: 500;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  transition: background-color 0.2s ease, box-shadow 0.2s;
+  min-width: 90px;
+  line-height: 1.25;
+  position: relative;
 }
 
-.btn:hover {
+/* Better contrast orange on black */
+.btn:disabled,
+.btn[aria-disabled="true"] {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background: linear-gradient(90deg, #805200 25%, #e87a41 100%);
+}
+
+.btn:hover,
+.btn:focus-visible {
   background-color: #FF8B4D;
+  box-shadow: 0 0 0 2px var(--accent);
+  color: var(--button-text-contrast);
+  outline: none;
+}
+
+/* Remove inner border for focused buttons on Firefox */
+.btn::-moz-focus-inner {
+  border: 0;
 }
 
 .btn-large {
