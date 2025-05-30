@@ -84,6 +84,102 @@ input:focus:not(:focus-visible),
   flex-direction: column;
 }
 
+.homepage-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 32px;
+  padding-bottom: 24px;
+}
+.grid-filters {
+  margin: 0 auto;
+  max-width: 670px;
+}
+.grid-main-carousels {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  width: 100%;
+}
+.carousel-box {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.5rem;
+}
+.grid-booking-ar {
+  display: flex;
+  gap: 28px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.booking-ar-box {
+  flex: 1 1 340px;
+  min-width: 290px;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.5rem;
+}
+.homepage-section-title {
+  font-weight: 600;
+  font-size: 1.16rem;
+  line-height: 1.18;
+  color: var(--accent);
+  margin-bottom: 7px;
+  letter-spacing: 0.02em;
+  padding-left: 2px;
+  padding-bottom: 1px;
+}
+.homepage-trending-title {
+  color: var(--kavia-orange);
+  font-size: 1.23rem;
+  margin-bottom: 10px;
+}
+.homepage-recommended-title {
+  color: var(--accent);
+  font-size: 1.23rem;
+  margin-bottom: 10px;
+}
+
+/* Responsive stacking for carousels/booking/AR on mobile */
+@media (max-width: 900px) {
+  .grid-main-carousels {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .grid-booking-ar {
+    flex-direction: column;
+    gap: 18px;
+  }
+}
+
+@media (max-width: 540px) {
+  .homepage-grid {
+    grid-gap: 16px;
+    padding-bottom: 9px;
+  }
+  .grid-filters {
+    max-width: 99vw;
+  }
+  .carousel-box {
+    gap: 0.1rem;
+  }
+  .booking-ar-box {
+    min-width: 0;
+    padding: 0;
+  }
+}
+
+/* Slightly tighten component paddings for mobile */
+@media (max-width: 420px) {
+  .carousel-box,
+  .booking-ar-box {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+}
+
 .navbar {
   background-color: var(--kavia-dark);
   padding: 16px;
