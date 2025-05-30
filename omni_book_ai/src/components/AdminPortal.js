@@ -62,6 +62,8 @@ function SimpleMiniBar({ values = [], color = "#FF6600" }) {
 }
 
 // PUBLIC_INTERFACE
+import { useNavigate } from "react-router-dom";
+
 export default function AdminPortal() {
   /**
    * AdminPortal: Multi-domain vendor dashboard for analytics/management.
@@ -69,9 +71,11 @@ export default function AdminPortal() {
    * - Mock statistics cards (revenue, traffic, sales, events)
    * - Mini bar chart as traffic/heat map placeholder
    * - Responsive layout, black-orange theme
+   * - Entry/exit navigation to main experience
    */
   const [activeVendor, setActiveVendor] = useState("cinema");
   const activeAnalytics = MOCK_ANALYTICS[activeVendor];
+  const navigate = useNavigate();
 
   // Card config
   const STAT_CARDS = [
