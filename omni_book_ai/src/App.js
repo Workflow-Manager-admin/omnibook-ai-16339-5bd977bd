@@ -8,10 +8,11 @@ import ChatSupport from './components/ChatSupport';
 import UniversalSearch from './components/UniversalSearch';
 
  // PUBLIC_INTERFACE
- // Home page: Only show welcome message & router button to Booking
+ // Home page: Only show a welcome message and navigation button to Booking
 function Home() {
   const navigate = useNavigate();
-  // Display only the welcome message and a button that navigates to Booking page.
+
+  // Only the welcome message and a navigation button to Booking
   return (
     <div
       className="main-content-inner single-page"
