@@ -12,37 +12,36 @@ import { NavLink, Routes, Route, Outlet } from 'react-router-dom';
 
 /**
  * PUBLIC_INTERFACE
- * Home page: now arranges filters vertically at left, with main content in card grid to the right.
+ * Home page: Simple welcome message and navigation button to the Booking page.
  */
+import { useNavigate } from 'react-router-dom'; // Import navigation hook
+
 function Home() {
+  const navigate = useNavigate();
   return (
-    <div className="main-content-inner">
-      <aside className="home-left-rail" aria-label="Main filters and shortcuts">
-        <FilterButtons />
-      </aside>
-      <div className="cardstack">
-        <div className="card-section card-wide">
-          <div className="homepage-section-title homepage-recommended-title">
-            <span role="img" aria-label="recommended">✨</span> Recommended For You
-          </div>
-          <RecommendationsCarousel />
+    <div className="main-content-inner single-page" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '80vh' }}>
+      <div className="card-section" style={{ textAlign: 'center', maxWidth: 470, margin: '0 auto', padding: '40px 24px' }}>
+        <div className="subtitle" style={{ color: 'var(--kavia-orange)', fontWeight: 600, marginBottom: 8, fontSize: '1.14em' }}>
+          Welcome to OmniBook AI
         </div>
-        <div className="card-section">
-          <div className="homepage-section-title homepage-trending-title">
-            <span role="img" aria-label="trending">🔥</span> Trending Now
-          </div>
-          <TrendingCarousel />
+        <div className="title" style={{ marginBottom: 12 }}>Your Smart Booking Platform</div>
+        <div className="description" style={{ marginBottom: 32 }}>
+          Start your seamless booking journey across sports, movies, travel, and more. Click below to explore!
         </div>
-        <div className="card-section card-flex">
-          <section className="booking-card-stack">
-            <div className="homepage-section-title"><span role="img" aria-label="booking">🎫</span> Book Your Seat</div>
-            <BookingFlow />
-          </section>
-          <section className="ar-card-stack">
-            <div className="homepage-section-title"><span role="img" aria-label="ar-seat">🪑</span> AR Seat Map Preview</div>
-            <SeatMapAR />
-          </section>
-        </div>
+        <button className="btn btn-large"
+          style={{
+            background: 'var(--kavia-orange)',
+            color: 'var(--button-text-contrast)',
+            fontWeight: 600,
+            fontSize: '1.1rem',
+            minWidth: 140,
+            padding: '13px 32px'
+          }}
+          onClick={() => navigate('/booking')}
+          aria-label="Go to booking page"
+        >
+          Go to Booking &rarr;
+        </button>
       </div>
     </div>
   );
