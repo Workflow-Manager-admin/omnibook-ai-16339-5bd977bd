@@ -23,6 +23,8 @@ export default function BookingFlow() {
    */
   const [currentPurpose, setCurrentPurpose] = useState(""); // blank until chosen
   const [formState, setFormState] = useState({});
+  const { submitBooking } = useBookingContext();
+  const [submissionSuccess, setSubmissionSuccess] = useState(false);
 
   // Reset form state when switching purposes
   function handlePurposeChange(e) {
