@@ -9,11 +9,10 @@ export default function ChatSupport() {
       aria-label="AI Chat Support"
       tabIndex={0}
       style={{
-        padding: 20,
+        padding: "14px 12px",
         background: "rgba(255,255,255,0.05)",
         border: "1px solid var(--border-color)",
         borderRadius: 8,
-        minWidth: 220,
         color: "var(--secondary)",
         textAlign: "center"
       }}
