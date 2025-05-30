@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./AdminPortal.css";
+import { useNavigate } from "react-router-dom";
 
 // Vendor domains for switching context
 const VENDORS = [
@@ -60,9 +61,6 @@ function SimpleMiniBar({ values = [], color = "#FF6600" }) {
     </svg>
   );
 }
-
-// PUBLIC_INTERFACE
-import { useNavigate } from "react-router-dom";
 
 export default function AdminPortal() {
   /**
