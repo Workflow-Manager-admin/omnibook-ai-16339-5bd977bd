@@ -64,17 +64,16 @@ function Home() {
   );
 }
 
-// PUBLIC_INTERFACE
+/**
+ * PUBLIC_INTERFACE
+ * Booking: Only show the booking flow form (no AR seat map, no steps)
+ */
 function Booking() {
   return (
     <div className="main-content-inner single-page">
       <div className="card-section">
-        <h2>Booking Flow</h2>
+        <h2>Booking</h2>
         <BookingFlow />
-      </div>
-      <div className="card-section">
-        <div style={{ fontWeight: 600, fontSize: '1.16rem', color: 'var(--secondary)', marginBottom: 7 }}>🪑 AR Seat Map Preview</div>
-        <SeatMapAR />
       </div>
     </div>
   );

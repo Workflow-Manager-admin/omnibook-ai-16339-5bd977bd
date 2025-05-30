@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 
 // Booking purposes
 const PURPOSES = [
@@ -11,25 +11,16 @@ const PURPOSES = [
   { value: "concerts", label: "Concerts" }
 ];
 
-// Mock booking steps (retained for context UI)
-const STEPS = [
-  { id: 101, label: "1. Choose Event", emoji: "🎫" },
-  { id: 102, label: "2. Select Date & Time", emoji: "📅" },
-  { id: 103, label: "3. Pick Seat", emoji: "🪑" },
-  { id: 104, label: "4. Confirm Booking", emoji: "✅" },
-];
-
 // PUBLIC_INTERFACE
 export default function BookingFlow() {
   /**
-   * Enhanced BookingFlow with dropdown for purpose
+   * BookingFlow: Minimal, dynamic booking by purpose.
    * - Dropdown for booking purpose
-   * - Shows only relevant form for selected purpose
+   * - Shows only the relevant form for selected purpose
+   * - All stepper, AR seat map, and booking stages removed for simplicity
    */
   const [currentPurpose, setCurrentPurpose] = useState(""); // blank until chosen
   const [formState, setFormState] = useState({});
-  const [currentStep, setCurrentStep] = useState(0);
-  const listRef = useRef([]);
 
   // Reset form state when switching purposes
   function handlePurposeChange(e) {
@@ -37,7 +28,7 @@ export default function BookingFlow() {
     setFormState({});
   }
 
-  // Form input generic change handler
+  // Generic input change handler
   const handleInputChange = (e) => {
     setFormState((prev) => ({
       ...prev,
@@ -45,7 +36,7 @@ export default function BookingFlow() {
     }));
   };
 
-  // --- Example Renderers for Each Form ---
+  // Render the booking form for the selected purpose
   function renderBookingForm() {
     switch (currentPurpose) {
       case "sports":
@@ -96,7 +87,6 @@ export default function BookingFlow() {
                 required
               />
             </Field>
-            {/* Add more fields if needed */}
             <SubmitButton />
           </form>
         );
@@ -327,54 +317,43 @@ export default function BookingFlow() {
     );
   }
 
-  // Keyboard navigation for steps (from original logic)
-  function handleClick(idx) {
-    setCurrentStep(idx);
-  }
-  function handleKeyDown(e, idx) {
-    // Select on Enter or Space
-    if (e.key === " " || e.key === "Enter") {
-      setCurrentStep(idx);
-      e.preventDefault();
-    }
-    // Keyboard step navigation with arrows
-    if (e.key === "ArrowDown") {
-      const next = (idx + 1) % STEPS.length;
-      listRef.current[next]?.focus();
-      e.preventDefault();
-    }
-    if (e.key === "ArrowUp") {
-      const prev = (idx - 1 + STEPS.length) % STEPS.length;
-      listRef.current[prev]?.focus();
-      e.preventDefault();
-    }
-  }
-
   return (
-    <div style={{
-      background: "rgba(255,255,255,0.03)",
-      border: "1px dashed var(--accent)",
-      borderRadius: 10,
-      color: "var(--accent)",
-      padding: "15px 0 16px 0",
-      minHeight: 64,
-      textAlign: "left",
-      display: "flex",
-      flexDirection: "column",
-      gap: "1.1rem"
-    }}>
+    <div
+      style={{
+        background: "rgba(255,255,255,0.03)",
+        border: "1px dashed var(--accent)",
+        borderRadius: 10,
+        color: "var(--accent)",
+        padding: "15px 0 16px 0",
+        minHeight: 64,
+        textAlign: "left",
+        display: "flex",
+        flexDirection: "column",
+        gap: "1.1rem"
+      }}
+    >
       {/* Dropdown for booking purpose */}
-      <div style={{
-        display: "flex", flexDirection: "column", alignItems: "flex-start",
-        gap: 8, margin: "0 0 10px 0"
-      }}>
-        <label htmlFor="purpose" style={{
-          fontWeight: 600,
-          fontSize: "1.09em",
-          color: "var(--accent)",
-          display: "block",
-          marginBottom: 3
-        }}>Booking Purpose</label>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "flex-start",
+          gap: 8,
+          margin: "0 0 10px 0"
+        }}
+      >
+        <label
+          htmlFor="purpose"
+          style={{
+            fontWeight: 600,
+            fontSize: "1.09em",
+            color: "var(--accent)",
+            display: "block",
+            marginBottom: 3
+          }}
+        >
+          Booking Purpose
+        </label>
         <select
           id="purpose"
           aria-label="Choose booking purpose"
@@ -397,133 +376,34 @@ export default function BookingFlow() {
           }}
         >
           <option value="">-- Select Purpose --</option>
-          {PURPOSES.map(opt =>
-            <option key={opt.value} value={opt.value}>{opt.label}</option>
-          )}
+          {PURPOSES.map((opt) => (
+            <option key={opt.value} value={opt.value}>
+              {opt.label}
+            </option>
+          ))}
         </select>
       </div>
 
       {/* Show relevant booking form. Only display once a purpose is selected */}
-      {currentPurpose &&
-        <div style={{
-          margin: "10px 0 0 0",
-          background: "rgba(255,255,255,0.01)",
-          border: "1.5px solid var(--border-color)",
-          borderRadius: 9,
-          padding: "22px 15px 12px 12px",
-          boxShadow: "0 2px 10px 0 rgba(36,36,38,0.08)"
-        }}>
+      {currentPurpose && (
+        <div
+          style={{
+            margin: "10px 0 0 0",
+            background: "rgba(255,255,255,0.01)",
+            border: "1.5px solid var(--border-color)",
+            borderRadius: 9,
+            padding: "22px 15px 12px 12px",
+            boxShadow: "0 2px 10px 0 rgba(36,36,38,0.08)"
+          }}
+        >
           {renderBookingForm()}
         </div>
-      }
-
-      {/* Booking Steps and instructions */}
-      <div
-        role="list"
-        aria-label="Booking Flow Steps"
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          gap: "12px",
-          justifyContent: "space-evenly",
-          marginTop: 20,
-        }}
-      >
-        {STEPS.map((step, idx) => {
-          const isActive = currentStep === idx;
-          return (
-            <button
-              ref={el => (listRef.current[idx] = el)}
-              key={step.id}
-              tabIndex={0}
-              role="listitem"
-              aria-pressed={isActive}
-              aria-label={`${step.label}${isActive ? " (current)" : ""}`}
-              type="button"
-              onClick={() => handleClick(idx)}
-              onKeyDown={e => handleKeyDown(e, idx)}
-              style={{
-                background: isActive ? "var(--kavia-orange)" : "rgba(255,255,255,0.10)",
-                color: isActive ? "#fff" : "var(--accent)",
-                border: isActive
-                  ? "2.2px solid var(--accent)"
-                  : "1px dashed var(--accent)",
-                borderRadius: 7,
-                minWidth: 110,
-                minHeight: 48,
-                padding: "11px 10px",
-                fontWeight: isActive ? 700 : 500,
-                fontSize: "1.05rem",
-                outline: isActive ? "2.4px solid var(--accent)" : undefined,
-                cursor: "pointer",
-                boxShadow: isActive
-                  ? "0 0 0 2px var(--accent)"
-                  : undefined,
-                transition: "background 0.15s, border 0.14s, box-shadow 0.13s",
-                opacity: isActive ? 1 : 0.93,
-                display: "flex",
-                alignItems: "center",
-                gap: 6,
-                position: "relative",
-              }}
-              onFocus={() => { }}
-            >
-              <span aria-hidden="true" style={{
-                fontSize: "1.25rem",
-                marginRight: "0.40em"
-              }}>{step.emoji}</span>
-              <span>{step.label}</span>
-              {isActive && (
-                <span
-                  aria-hidden="true"
-                  style={{
-                    position: "absolute",
-                    top: 7,
-                    right: 7,
-                    fontWeight: "bold",
-                    background: "var(--accent)",
-                    color: "#fff",
-                    borderRadius: "2.8px",
-                    padding: "0 5px",
-                    fontSize: "1em",
-                  }}
-                >✓</span>
-              )}
-            </button>
-          );
-        })}
-      </div>
-      {/* Step description */}
-      <div
-        style={{
-          margin: "12px 0 0 0",
-          background: "rgba(255,255,255,0.05)",
-          borderRadius: 6,
-          color: "var(--accent)",
-          minHeight: 28,
-          padding: "7px 12px",
-          fontSize: "1.04em",
-          transition: "background 0.13s",
-        }}
-        aria-live="polite"
-      >
-        <span>
-          {(() => {
-            switch (currentStep) {
-              case 0: return "Select an event to book tickets for.";
-              case 1: return "Choose your preferred date and time.";
-              case 2: return "Pick your seat for the event (try AR preview next!).";
-              case 3: return "Review and confirm your booking.";
-              default: return null;
-            }
-          })()}
-        </span>
-      </div>
+      )}
     </div>
   );
 }
 
-// Helper: booking form card style (kept inline for UI harmony)
+// Helper: booking form card style
 const bookingFormStyle = {
   display: "flex",
   flexDirection: "column",
