@@ -1,0 +1,4 @@
+{
+    "command": "PORT=<port> BROWSER=none npm start",
+    "working_directory": "/home/kavia/workspace/code-generation/omnibook-ai-16339-5bd977bd/omni_book_ai"
+}
