@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import "./AdminPortal.css";
 import { useNavigate } from "react-router-dom";
+import { useBookingContext } from "../BookingContext";
 
 // Vendor domains for switching context
 const VENDORS = [
