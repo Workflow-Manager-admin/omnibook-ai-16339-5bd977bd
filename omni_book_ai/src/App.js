@@ -13,34 +13,44 @@ import { NavLink, Routes, Route, Outlet } from 'react-router-dom';
 
 // Stub route page components
 
-// PUBLIC_INTERFACE
+/**
+ * PUBLIC_INTERFACE
+ * Home page with grid for all principal sections, ensuring non-overlapping and clear hierarchy.
+ */
 function Home() {
   return (
-    <>
+    <div className="homepage-grid">
       {/* Filter & Quick-access Buttons */}
-      <section>
+      <div className="grid-filters">
         <FilterButtons />
-      </section>
-      {/* Trending Events Carousel */}
-      <section style={{ margin: '32px 0' }}>
-        <div style={{ fontWeight: 600, fontSize: '1.25rem', color: 'var(--kavia-orange)', marginBottom: 12 }}>🔥 Trending Now</div>
-        <TrendingCarousel />
-      </section>
-      {/* Recommendations Carousel */}
-      <section style={{ margin: '32px 0' }}>
-        <div style={{ fontWeight: 600, fontSize: '1.25rem', color: 'var(--accent)', marginBottom: 12 }}>✨ Recommended For You</div>
-        <RecommendationsCarousel />
-      </section>
-      {/* Example Booking and AR zones for integration UI scaffolding */}
-      <section style={{ margin: '32px 0' }}>
-        <div style={{ fontWeight: 600, fontSize: '1.16rem', color: 'var(--accent)', marginBottom: 7 }}>🎫 Book Your Seat</div>
-        <BookingFlow />
-      </section>
-      <section style={{ margin: '32px 0' }}>
-        <div style={{ fontWeight: 600, fontSize: '1.16rem', color: 'var(--secondary)', marginBottom: 7 }}>🪑 AR Seat Map Preview</div>
-        <SeatMapAR />
-      </section>
-    </>
+      </div>
+      {/* Trending Events & Recommendations in a two-row grid */}
+      <div className="grid-main-carousels">
+        <div className="carousel-box">
+          <div className="homepage-section-title homepage-trending-title">
+            <span role="img" aria-label="trending">🔥</span> Trending Now
+          </div>
+          <TrendingCarousel />
+        </div>
+        <div className="carousel-box">
+          <div className="homepage-section-title homepage-recommended-title">
+            <span role="img" aria-label="recommended">✨</span> Recommended For You
+          </div>
+          <RecommendationsCarousel />
+        </div>
+      </div>
+      {/* Booking & AR seat in responsive row/column */}
+      <div className="grid-booking-ar">
+        <div className="booking-ar-box">
+          <div className="homepage-section-title"><span role="img" aria-label="booking">🎫</span> Book Your Seat</div>
+          <BookingFlow />
+        </div>
+        <div className="booking-ar-box">
+          <div className="homepage-section-title"><span role="img" aria-label="ar-seat">🪑</span> AR Seat Map Preview</div>
+          <SeatMapAR />
+        </div>
+      </div>
+    </div>
   );
 }
 
