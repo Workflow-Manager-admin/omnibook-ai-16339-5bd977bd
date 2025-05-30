@@ -5,7 +5,6 @@ export default function RecommendationsCarousel() {
   /** Placeholder for personalized recommendations carousel. */
   return (
     <section
-      role="region"
       aria-label="Personalized Recommendations"
       tabIndex={0}
       style={{

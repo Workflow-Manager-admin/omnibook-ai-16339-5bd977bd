@@ -5,7 +5,6 @@ export default function TrendingCarousel() {
   /** Placeholder component for trending events carousel. */
   return (
     <section
-      role="region"
       aria-label="Trending Now"
       tabIndex={0}
       style={{
