@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./BookingFlow.css";
+import { useBookingContext } from "../BookingContext";
 
 // Booking purposes with simple icons
 const PURPOSES = [
