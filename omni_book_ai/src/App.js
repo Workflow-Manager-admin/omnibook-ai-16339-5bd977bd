@@ -8,9 +8,10 @@ import ChatSupport from './components/ChatSupport';
 import UniversalSearch from './components/UniversalSearch';
 
  // PUBLIC_INTERFACE
- // Home page: Only show a welcome message and navigation button to Booking
+ // Home page: Displays only a welcome message and a button that navigates to Booking
 function Home() {
   const navigate = useNavigate();
+
   return (
     <div
       className="main-content-inner single-page"
@@ -18,7 +19,7 @@ function Home() {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        minHeight: '80vh'
+        minHeight: '80vh',
       }}
     >
       <div
@@ -27,7 +28,7 @@ function Home() {
           textAlign: 'center',
           maxWidth: 420,
           margin: '0 auto',
-          padding: '46px 27px'
+          padding: '46px 27px',
         }}
       >
         <div
@@ -35,8 +36,8 @@ function Home() {
           style={{
             color: 'var(--kavia-orange)',
             fontWeight: 600,
-            marginBottom: 12,
-            fontSize: '1.25em'
+            marginBottom: 20,
+            fontSize: '1.25em',
           }}
         >
           Welcome to OmniBook AI
@@ -50,8 +51,8 @@ function Home() {
             fontSize: '1.11rem',
             minWidth: 165,
             padding: '15px 38px',
-            marginTop: 20,
-            border: 'none'
+            marginTop: 28,
+            border: 'none',
           }}
           onClick={() => navigate('/booking')}
           aria-label="Go to booking page"
