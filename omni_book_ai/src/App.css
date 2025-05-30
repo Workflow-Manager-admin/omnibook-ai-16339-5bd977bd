@@ -41,6 +41,43 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Improve focus-visible for all interactive elements */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+[tabindex]:focus-visible {
+  outline: var(--focus-outline);
+  outline-offset: 2px;
+  z-index: 2;
+  box-shadow: 0 0 0 2px var(--accent);
+}
+
+a:focus:not(:focus-visible),
+button:focus:not(:focus-visible),
+input:focus:not(:focus-visible),
+[tabindex]:focus:not(:focus-visible) {
+  outline: none;
+  box-shadow: none;
+}
+
+/* Ensure keyboard navigation is obvious */
+.skip-link {
+  position: absolute;
+  left: -100vw;
+  top: 10px;
+  background: var(--secondary);
+  color: var(--button-text-contrast);
+  padding: 0.5em 1em;
+  z-index: 9999;
+  border-radius: 3px;
+}
+.skip-link:focus {
+  left: 50%;
+  transform: translateX(-50%);
+  outline: var(--focus-outline);
+  box-shadow: 0 0 0 2px var(--accent);
+}
+
 .app {
   min-height: 100vh;
   display: flex;
