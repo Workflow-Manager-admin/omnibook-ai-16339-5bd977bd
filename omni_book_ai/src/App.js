@@ -11,7 +11,7 @@ import UniversalSearch from './components/UniversalSearch';
  // Home page: Only show welcome message & router button to Booking
 function Home() {
   const navigate = useNavigate();
-  // Home is now minimal: only welcome and button; all other elements are removed
+  // Display only the welcome message and a button that navigates to Booking page.
   return (
     <div
       className="main-content-inner single-page"
@@ -42,16 +42,6 @@ function Home() {
         >
           Welcome to OmniBook AI
         </div>
-        <div
-          className="description"
-          style={{
-            marginBottom: 36,
-            fontWeight: 500,
-            fontSize: '1.08rem'
-          }}
-        >
-          Start your seamless booking journey.
-        </div>
         <button
           className="btn btn-large"
           style={{
@@ -61,7 +51,7 @@ function Home() {
             fontSize: '1.11rem',
             minWidth: 165,
             padding: '15px 38px',
-            marginTop: 4,
+            marginTop: 20,
             border: 'none'
           }}
           onClick={() => navigate('/booking')}
