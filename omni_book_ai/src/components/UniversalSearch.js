@@ -15,7 +15,7 @@ export default function UniversalSearch() {
         alignItems: "center",
         gap: 8
       }}
-      tabIndex={0}
+      autoComplete="off"
     >
       <input
         type="search"
@@ -34,7 +34,6 @@ export default function UniversalSearch() {
         aria-label="Universal search"
         aria-describedby="search-desc"
         autoComplete="on"
-        tabIndex={0}
       />
       {/* visually hidden search description for screen readers */}
       <span id="search-desc" style={{position: "absolute", left: "-10000px", width:1, height:1, overflow:"hidden"}}>
