@@ -126,11 +126,11 @@ function Layout() {
           <NavLink
             to="/admin"
             className="sidebar-nav-link"
-            aria-label="Admin Portal"
+            aria-label="Admin Portal Dashboard"
             tabIndex={0}
           >
-            <span role="img" aria-label="Admin" style={{ marginRight: 8 }}>🛠️</span>
-            Admin
+            <span role="img" aria-label="Admin Portal" style={{ marginRight: 8 }}>🛠️</span>
+            Admin Portal
           </NavLink>
         </nav>
         <div className="sidebar-actions">

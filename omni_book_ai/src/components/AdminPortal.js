@@ -112,10 +112,38 @@ export default function AdminPortal() {
   // Main dashboard UI
   return (
     <div className="adminportal-root">
-      <header className="adminportal-header">
-        <h2>
-          <span className="adminportal-icon">🛠️</span>
-          <span style={{ marginRight: 13 }}>Admin Portal Dashboard</span>
+      <header className="adminportal-header" style={{ position: "relative" }}>
+        <h2 style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+          <span>
+            <span className="adminportal-icon">🛠️</span>
+            <span style={{ marginRight: 13 }}>Admin Portal Dashboard</span>
+          </span>
+          <button
+            type="button"
+            onClick={() => navigate("/booking")}
+            className="btn"
+            style={{
+              fontSize: "1em",
+              fontWeight: 700,
+              background: "var(--secondary)",
+              color: "#fff",
+              border: "2px solid var(--accent)",
+              borderRadius: 8,
+              marginLeft: 18,
+              padding: "8px 20px",
+              outline: "none",
+              transition: "background 0.18s",
+              boxShadow: "0 1px 5px 0 rgba(120,60,0,0.07)",
+              position: "relative",
+              top: 0,
+              right: 0,
+            }}
+            aria-label="Return to Booking"
+            tabIndex={0}
+          >
+            <span aria-hidden="true" style={{ marginRight: 7 }}>←</span>
+            Back to Booking
+          </button>
         </h2>
         <div className="adminportal-vendor-switcher" role="tablist" aria-label="Switch Dashboard Vendor Type">
           {VENDORS.map((v) => (
