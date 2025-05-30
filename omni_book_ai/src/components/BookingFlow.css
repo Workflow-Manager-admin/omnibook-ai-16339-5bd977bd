@@ -1,0 +1,195 @@
+.bookingflow-root {
+  background: rgba(255,255,255,0.025);
+  border: 1.7px dashed var(--accent);
+  border-radius: 13px;
+  padding: 16px 0 17px 0;
+  min-height: 64px;
+  color: var(--accent);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  box-shadow: 0 2px 18px 0 rgba(36,36,38,0.10);
+}
+.bookingflow-purpose-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 7px;
+  margin: 0 0 10px 0;
+}
+
+.bookingflow-label {
+  font-weight: 700;
+  font-size: 1.13em;
+  color: var(--accent);
+  margin-bottom: 2px;
+  display: block;
+  letter-spacing: 0.01em;
+}
+
+.bookingflow-select,
+.bookingflow-form select,
+.bookingflow-form input[type='text'],
+.bookingflow-form input[type='date'],
+.bookingflow-form input[type='number'],
+.bookingflow-form input[type='time'] {
+  width: 100%;
+  min-width: 160px;
+  max-width: 410px;
+  font-size: 1.09em;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 1.7px solid var(--border-color);
+  background: var(--main-content-bg, #1a1a1a);
+  color: var(--text-color);
+  font-weight: 500;
+  margin-bottom: 2px;
+  transition: box-shadow 0.18s, border 0.17s;
+  box-shadow: none;
+}
+
+.bookingflow-select:focus,
+.bookingflow-form select:focus,
+.bookingflow-form input:focus {
+  outline: var(--focus-outline);
+  border: 2px solid var(--kavia-orange);
+  box-shadow: 0 0 0 2px var(--accent);
+  background: rgba(255,102,0,0.08);
+}
+
+.bookingflow-purpose-section select {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.bookingflow-form-card {
+  margin: 10px 0 0 0;
+  background: rgba(255,255,255,0.016);
+  border: 1.5px solid var(--border-color);
+  border-radius: 13px;
+  padding: 28px 5vw 19px 4vw;
+  box-shadow: 0 2px 20px 0 rgba(36,36,38,0.13);
+  max-width: 540px;
+}
+
+.bookingflow-form {
+  display: flex;
+  flex-direction: column;
+  gap: 21px;
+  margin: 0;
+  padding: 0;
+}
+
+.bookingflow-heading {
+  font-weight: 700;
+  font-size: 1.24rem;
+  color: var(--kavia-orange);
+  margin-bottom: 13px;
+  letter-spacing: 0.01em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.bookingflow-field {
+  display: flex;
+  flex-direction: column;
+  gap: 3.5px;
+  margin-bottom: 5px;
+}
+
+.bookingflow-field label > span,
+.bookingflow-field > span {
+  color: var(--text-secondary);
+  font-weight: 500;
+  margin-bottom: 1.7px;
+  font-size: 1rem;
+}
+
+.bookingflow-btn {
+  background: var(--kavia-orange);
+  color: var(--button-text-contrast);
+  border: none;
+  font-weight: 700;
+  border-radius: 7px;
+  padding: 13px 32px;
+  margin-top: 13px;
+  font-size: 1.14em;
+  min-width: 120px;
+  transition: background 0.19s, box-shadow 0.2s, border 0.18s;
+  box-shadow: 0 0 0 0px var(--accent);
+  outline: none;
+  cursor: not-allowed;
+  opacity: 0.68;
+}
+
+.bookingflow-btn:focus-visible, .bookingflow-btn:hover {
+  outline: 2px solid var(--accent);
+  box-shadow: 0 0 0 2.5px var(--accent);
+  background: #ff9339;
+  color: #fff;
+}
+
+.bookingflow-form input:disabled,
+.bookingflow-form select:disabled {
+  opacity: 0.6;
+}
+
+/* Section icons (optional brand/subtle) */
+.bookingflow-heading .icon {
+  color: var(--kavia-orange);
+  font-size: 1.2em;
+  margin-right: 3px;
+  vertical-align: top;
+}
+
+/* Subtle background motif for large screens */
+@media (min-width: 700px) {
+  .bookingflow-root::before {
+    content: '';
+    position: absolute;
+    left: 10vw;
+    top: 12px;
+    width: 7vw;
+    height: 7vw;
+    min-width: 72px;
+    min-height: 72px;
+    max-width: 110px;
+    border-radius: 48%;
+    background: linear-gradient(135deg, rgba(255,136,0,0.08) 36%, rgba(255,102,0,0.14) 100%);
+    filter: blur(10px);
+    z-index: 0;
+    pointer-events: none;
+  }
+}
+
+/* Responsive adjustments for mobile */
+@media (max-width: 550px) {
+  .bookingflow-form-card {
+    padding: 15px 3vw 13px 3vw;
+    max-width: 99vw;
+  }
+  .bookingflow-form {
+    gap: 12px;
+  }
+  .bookingflow-root {
+    padding: 9px 0 11px 0;
+  }
+}
+
+@media (max-width: 375px) {
+  .bookingflow-form-card {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.bookingflow-sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  clip: rect(1px,1px,1px,1px) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
