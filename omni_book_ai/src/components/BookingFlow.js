@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import "./BookingFlow.css";
+// BookingFlow uses the shared BookingContext to submit and persist bookings across the app/session.
+// See BookingContext.js for details on sessionStorage and shared state used in AdminPortal.
 import { useBookingContext } from "../BookingContext";
 
 // Booking purposes with simple icons

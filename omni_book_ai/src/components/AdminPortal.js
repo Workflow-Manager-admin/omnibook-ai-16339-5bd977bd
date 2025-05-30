@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import "./AdminPortal.css";
 import { useNavigate } from "react-router-dom";
 import { useBookingContext } from "../BookingContext";
+// AdminPortal consumes bookings from BookingContext (persisted in sessionStorage), which are submitted via BookingFlow.
 
 // Vendor domains for switching context
 const VENDORS = [
