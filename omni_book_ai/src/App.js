@@ -11,13 +11,45 @@ import UniversalSearch from './components/UniversalSearch';
  // Home page: Only show welcome message & router button to Booking
 function Home() {
   const navigate = useNavigate();
+  // Home is now minimal: only welcome and button; all other elements are removed
   return (
-    <div className="main-content-inner single-page" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '80vh' }}>
-      <div className="card-section" style={{ textAlign: 'center', maxWidth: 470, margin: '0 auto', padding: '46px 27px' }}>
-        <div className="subtitle" style={{ color: 'var(--kavia-orange)', fontWeight: 600, marginBottom: 8, fontSize: '1.2em' }}>
+    <div
+      className="main-content-inner single-page"
+      style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        minHeight: '80vh'
+      }}
+    >
+      <div
+        className="card-section"
+        style={{
+          textAlign: 'center',
+          maxWidth: 420,
+          margin: '0 auto',
+          padding: '46px 27px'
+        }}
+      >
+        <div
+          className="subtitle"
+          style={{
+            color: 'var(--kavia-orange)',
+            fontWeight: 600,
+            marginBottom: 8,
+            fontSize: '1.25em'
+          }}
+        >
           Welcome to OmniBook AI
         </div>
-        <div className="description" style={{ marginBottom: 36, fontWeight: 500, fontSize: '1.08rem' }}>
+        <div
+          className="description"
+          style={{
+            marginBottom: 36,
+            fontWeight: 500,
+            fontSize: '1.08rem'
+          }}
+        >
           Start your seamless booking journey.
         </div>
         <button
@@ -25,11 +57,12 @@ function Home() {
           style={{
             background: 'var(--kavia-orange)',
             color: 'var(--button-text-contrast)',
-            fontWeight: 600,
-            fontSize: '1.1rem',
-            minWidth: 160,
-            padding: '14px 38px',
-            marginTop: 4
+            fontWeight: 700,
+            fontSize: '1.11rem',
+            minWidth: 165,
+            padding: '15px 38px',
+            marginTop: 4,
+            border: 'none'
           }}
           onClick={() => navigate('/booking')}
           aria-label="Go to booking page"
