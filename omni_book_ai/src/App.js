@@ -89,7 +89,7 @@ function Layout() {
       </a>
       {/* Sidebar Navigation */}
       {/* Sidebar always includes Admin Portal for all contexts */}
-      <aside className="sidebar" role="navigation" aria-label="Main sidebar navigation">
+      <aside className="sidebar" role="navigation" aria-label="Application main sidebar">
         <div className="sidebar-header">
           <NavLink
             to="/"
@@ -97,43 +97,63 @@ function Layout() {
             aria-label="OmniBook homepage"
             style={{ display: 'flex', alignItems: 'center', gap: 8, textDecoration: "none", color: "inherit" }}
           >
-            <span className="logo-symbol" style={{ fontSize: '1.5rem' }}>◎</span> <span>OmniBook</span><span style={{ fontWeight: '300', color: 'var(--kavia-orange)', marginLeft: 2 }}>AI</span>
+            <span className="logo-symbol" style={{ fontSize: '1.5rem' }}>◎</span>
+            <span>OmniBook</span>
+            <span style={{ fontWeight: '300', color: 'var(--kavia-orange)', marginLeft: 2 }}>AI</span>
           </NavLink>
           {/* Universal Search Bar */}
           <div className="sidebar-search">
             <UniversalSearch />
           </div>
         </div>
-        <nav className="sidebar-nav" aria-label="Main sections">
-          {/* Permanent navigation: Home, Booking, Admin Portal (always visible, even in admin mode) */}
-          <NavLink
-            to="/"
-            className="sidebar-nav-link"
-            aria-label="Home"
-            tabIndex={0}
-            end
+        {/* Group navigation for user vs admin, with ARIA and headings */}
+        <nav className="sidebar-nav" aria-label="Main navigation links">
+          <div
+            role="group"
+            aria-label="General pages"
+            style={{ marginBottom: 8, borderBottom: '1px solid var(--border-color)', paddingBottom: 5 }}
           >
-            <span role="img" aria-label="Home" style={{ marginRight: 8 }}>🏠</span>
-            Home
-          </NavLink>
-          <NavLink
-            to="/booking"
-            className="sidebar-nav-link"
-            aria-label="Booking"
-            tabIndex={0}
+            <NavLink
+              to="/"
+              className={({ isActive }) =>
+                "sidebar-nav-link" + (isActive ? " active" : "")
+              }
+              aria-label="Home page"
+              tabIndex={0}
+              end
+            >
+              <span role="img" aria-label="Home" style={{ marginRight: 8 }}>🏠</span>
+              Home
+            </NavLink>
+            <NavLink
+              to="/booking"
+              className={({ isActive }) =>
+                "sidebar-nav-link" + (isActive ? " active" : "")
+              }
+              aria-label="Booking Page"
+              tabIndex={0}
+            >
+              <span role="img" aria-label="Booking" style={{ marginRight: 8 }}>🎟️</span>
+              Booking
+            </NavLink>
+          </div>
+          <div
+            role="group"
+            aria-label="Admin section"
+            style={{ marginTop: 7 }}
           >
-            <span role="img" aria-label="Booking" style={{ marginRight: 8 }}>🎟️</span>
-            Booking
-          </NavLink>
-          <NavLink
-            to="/admin"
-            className="sidebar-nav-link"
-            aria-label="Admin Portal Dashboard"
-            tabIndex={0}
-          >
-            <span role="img" aria-label="Admin Portal" style={{ marginRight: 8 }}>🛠️</span>
-            Admin Portal
-          </NavLink>
+            <NavLink
+              to="/admin"
+              className={({ isActive }) =>
+                "sidebar-nav-link" + (isActive ? " active" : "")
+              }
+              aria-label="Admin Portal"
+              tabIndex={0}
+            >
+              <span role="img" aria-label="Admin Portal" style={{ marginRight: 8 }}>🛠️</span>
+              <span>Admin Portal</span>
+            </NavLink>
+          </div>
         </nav>
         <div className="sidebar-actions">
           <Notifications />
