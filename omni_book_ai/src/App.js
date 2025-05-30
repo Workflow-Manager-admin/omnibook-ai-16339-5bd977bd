@@ -80,13 +80,22 @@ function AdminPortal() {
 }
 
 function Layout() {
-  // Layout including navbar, search and persistent widgets
+  // Layout including navbar, search and persistent widgets, with accessibility roles and skip links
   return (
     <div className="app">
-      {/* Navbar */}
-      <nav className="navbar">
+      {/* Skip to main for keyboard users */}
+      <a href="#main-content" className="skip-link" tabIndex="0">
+        Skip to main content
+      </a>
+      {/* Navbar with role="navigation" */}
+      <nav className="navbar" role="navigation" aria-label="Primary">
         <div className="container" style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          <NavLink to="/" className="logo" style={{ display: 'flex', alignItems: 'center', gap: 8, textDecoration: "none", color: "inherit" }}>
+          <NavLink
+            to="/"
+            className="logo"
+            aria-label="OmniBook homepage"
+            style={{ display: 'flex', alignItems: 'center', gap: 8, textDecoration: "none", color: "inherit" }}
+          >
             <span className="logo-symbol" style={{ fontSize: '1.5rem' }}>◎</span> OmniBook <span style={{ fontWeight: '300', color: 'var(--kavia-orange)', marginLeft: 2 }}>AI</span>
           </NavLink>
           {/* Universal Search Bar */}
@@ -95,7 +104,6 @@ function Layout() {
           </div>
           {/* Quick Actions: dashboard, notification, chat */}
           <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-            {/* Use NavLink for routing */}
             <NavLink
               to="/admin"
               className="btn"
@@ -109,6 +117,9 @@ function Layout() {
                 padding: "6px 18px",
                 margin: "0 6px"
               }}
+              role="button"
+              aria-label="Admin Dashboard"
+              tabIndex={0}
             >
               <span style={{ marginRight: 6, fontWeight: 700, fontSize: "1.1rem" }}>🛠️</span>
               Admin Dashboard
@@ -119,7 +130,7 @@ function Layout() {
         </div>
       </nav>
       {/* Main Content Area with space for nav + padding */}
-      <main>
+      <main id="main-content" tabIndex={-1} role="main" aria-label="Content Main Area">
         <div className="container" style={{ paddingTop: 96, paddingBottom: 36 }}>
           <Outlet />
         </div>

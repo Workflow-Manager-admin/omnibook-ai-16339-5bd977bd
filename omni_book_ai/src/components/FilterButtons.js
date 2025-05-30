@@ -13,7 +13,17 @@ export default function FilterButtons() {
     { label: "Resorts", icon: "🌴" },
   ];
   return (
-    <div style={{ display: "flex", justifyContent: "center", gap: 16, flexWrap: "wrap", marginBottom: 24 }}>
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        gap: 16,
+        flexWrap: "wrap",
+        marginBottom: 24
+      }}
+      role="group"
+      aria-label="Main quick filter buttons"
+    >
       {filters.map(btn => (
         <button
           key={btn.label}
@@ -28,8 +38,15 @@ export default function FilterButtons() {
             display: "flex",
             alignItems: "center",
             gap: 7
-          }}>
-          <span style={{ fontSize: "1.2rem" }}>{btn.icon}</span> {btn.label}
+          }}
+          tabIndex={0}
+          aria-label={`Filter: ${btn.label}`}
+          type="button"
+        >
+          <span aria-hidden="true" style={{ fontSize: "1.2rem" }}>
+            {btn.icon}
+          </span>
+          {btn.label}
         </button>
       ))}
     </div>
