@@ -12,7 +12,7 @@ import UniversalSearch from './components/UniversalSearch';
 function Home() {
   const navigate = useNavigate();
 
-  // Only the welcome message and a navigation button to Booking
+  // Minimal Home: welcome message + booking button only
   return (
     <div
       className="main-content-inner single-page"
